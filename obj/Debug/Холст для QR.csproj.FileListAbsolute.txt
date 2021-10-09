@@ -1,0 +1,10 @@
+D:\Код\Тест\Холст для QR\bin\Debug\Холст для QR.exe.config
+D:\Код\Тест\Холст для QR\bin\Debug\Холст для QR.exe
+D:\Код\Тест\Холст для QR\bin\Debug\Холст для QR.pdb
+D:\Код\Тест\Холст для QR\obj\Debug\Холст для QR.csproj.AssemblyReference.cache
+D:\Код\Тест\Холст для QR\obj\Debug\Холст_для_QR.Properties.Resources.resources
+D:\Код\Тест\Холст для QR\obj\Debug\Холст для QR.csproj.GenerateResource.cache
+D:\Код\Тест\Холст для QR\obj\Debug\Холст для QR.csproj.CoreCompileInputs.cache
+D:\Код\Тест\Холст для QR\obj\Debug\Холст для QR.exe
+D:\Код\Тест\Холст для QR\obj\Debug\Холст для QR.pdb
+D:\Код\Тест\Холст для QR\obj\Debug\Холст_для_QR.Form1.resources
