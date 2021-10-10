@@ -97,6 +97,7 @@ namespace Холст_для_QR
         }
         private static void SetBlocks()
         {
+            Console.WriteLine($"Версия: {Version}");
             int blockValue, blockRemain;
             BlockNumber = QRProperties.Blocks[CorrectionLevel][Version];
             Blocks = new Block[BlockNumber];
@@ -147,19 +148,18 @@ namespace Холст_для_QR
             Console.WriteLine();
             Console.WriteLine("Байты коррекции:");
             int i;
-            for (i = 0; i < QRProperties.ByteCorrection.Size.Length; i++)
+            for (i = 0; i < QRProperties.ByteCorrection.Polynomial.Length; i++)
             {
+        
                 if (QRProperties.ByteCorrection.Polynomial[i][0] == QRProperties.ByteCorrection.Size[CorrectionLevel][Version])
                 {
+
                     ByteCorrectionIndex = i;
                     break;
                 }
             }
             Console.WriteLine();
-            foreach (int number in QRProperties.ByteCorrection.Polynomial[ByteCorrectionIndex])
-            {
-                Console.Write($"{number} ");
-            }
+
             Console.WriteLine();
             ByteCorrectionBlocks = new int[BlockNumber][];
             for (int block = 0; block < BlockNumber; block++)
@@ -168,9 +168,9 @@ namespace Холст_для_QR
                  * из количества байтов в текущем блоке и количества байтов коррекции, и 
                  * заполнить его начало байтами из текущего блока, а конец нулями.*/
                 int[] tempArray;
-                if (QRProperties.ByteCorrection.Size[Version][ByteCorrectionIndex] > Blocks[block].data.Count)
+                if (QRProperties.ByteCorrection.Size[CorrectionLevel][Version] > Blocks[block].data.Count)
                 {
-                    tempArray = new int[QRProperties.ByteCorrection.Size[Version][ByteCorrectionIndex]];
+                    tempArray = new int[QRProperties.ByteCorrection.Size[CorrectionLevel][Version]];
                 }
                 else
                 {
@@ -194,7 +194,7 @@ namespace Холст_для_QR
                     /* Берём первый элемент массива, сохраняем его значение в переменной А и 
                      * удаляем его из массива (все следующие значения сдвигаются на одну ячейку влево, 
                      * последний элемент заполняется нулём). */
-                    int[] poly = new int[QRProperties.ByteCorrection.Size[Version][ByteCorrectionIndex]];
+                    int[] poly = new int[QRProperties.ByteCorrection.Size[CorrectionLevel][Version]];
                     for (int j = 0; j < poly.Length; j++)
                     {
                         poly[j] = QRProperties.ByteCorrection.Polynomial[ByteCorrectionIndex][j + 1];
@@ -219,21 +219,20 @@ namespace Холст_для_QR
 
 
                         int ratio = QRProperties.Galois[1][firstItem];
-                        for (int j = 0; j < poly.Length; j++)
+                        for (int j = 0; j < QRProperties.ByteCorrection.Size[CorrectionLevel][Version]; j++)
                         {
                             poly[j] += ratio;
                             poly[j] %= 255;
                         }
 
-
-                        for (int j = 0; j < poly.Length; j++)
+                        for (int j = 0; j < QRProperties.ByteCorrection.Size[CorrectionLevel][Version]; j++)
                         {
                             tempArray[j] = QRProperties.Galois[0][poly[j]] ^ tempArray[j];
                         }
                     }
                 }
-                ByteCorrectionBlocks[block] = new int[QRProperties.ByteCorrection.Size[Version][ByteCorrectionIndex]];
-                for (int f = 0; f < QRProperties.ByteCorrection.Size[Version][ByteCorrectionIndex]; f++)
+                ByteCorrectionBlocks[block] = new int[QRProperties.ByteCorrection.Size[CorrectionLevel][Version]];
+                for (int f = 0; f < QRProperties.ByteCorrection.Size[CorrectionLevel][Version]; f++)
                 {
                     ByteCorrectionBlocks[block][f] = tempArray[f];
                 }

@@ -11,3 +11,4 @@ D:\Код\Проекты\QR-Code generator\obj\Debug\Холст для QR.pdb
 D:\Код\Проекты\QR-Code generator\bin\Debug\Newtonsoft.Json.dll
 D:\Код\Проекты\QR-Code generator\bin\Debug\Newtonsoft.Json.xml
 D:\Код\Проекты\QR-Code generator\obj\Debug\QR-Code generator.csproj.CopyComplete
+D:\Код\Проекты\QR-Code generator\bin\Debug\info.json

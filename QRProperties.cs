@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.IO;
@@ -19,6 +20,7 @@ namespace Холст_для_QR
         public static int[][] Galois { get; set; }
         public static ArrayList[] VersionCode { get; set; }
         public static string[][] Mask { get; set; }
+        public static int[] FieldSize { get; set; }
         static QRProperties()
         {
             using (StreamReader r = new StreamReader("info.json"))
@@ -35,13 +37,15 @@ namespace Холст_для_QR
                 AlignmentPattern = items[0].alignmentPattern;
                 VersionCode = items[0].versionCode;
                 Mask = items[0].mask;
+                FieldSize = items[0].fieldSize;
+
             }
 
         }
     }
     class Item
     {
-        public int[][] size = null; //works
+        public int[][] size; //works
         public int[] headerSize; //works;
         public int[][] blocks; //works
         public int[][] byteCorrection;
@@ -50,5 +54,6 @@ namespace Холст_для_QR
         public int[][] alignmentPattern;
         public ArrayList[] versionCode; //works;
         public string[][] mask; //works
+        public int[] fieldSize;
     }
 }
