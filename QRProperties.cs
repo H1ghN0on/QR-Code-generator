@@ -18,7 +18,7 @@ namespace Холст_для_QR
         public static int[] HeaderSize { get; set; }
         public static int[][] Blocks { get; set; }
         public static int[][] Galois { get; set; }
-        public static ArrayList[] VersionCode { get; set; }
+        public static string[][] VersionCode { get; set; }
         public static string[][] Mask { get; set; }
         public static int[] FieldSize { get; set; }
         static QRProperties()
@@ -52,7 +52,7 @@ namespace Холст_для_QR
         public int[][] polynomial;
         public int[][] galois; //works
         public int[][] alignmentPattern;
-        public ArrayList[] versionCode; //works;
+        public string[][] versionCode; //works;
         public string[][] mask; //works
         public int[] fieldSize;
     }

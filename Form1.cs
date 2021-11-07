@@ -158,6 +158,7 @@ namespace Холст_для_QR
         }
         public void FillData(string value)
         {
+            Console.WriteLine($"Version: {Version} ");
             int i = 0;
             bool down = false;
             for (int x = Size - 1; x > 0; x -= 2)
@@ -251,363 +252,66 @@ namespace Холст_для_QR
                     }
                 }
             }
-            /*for (int x = 20; x >= 14; x -= 2)
+            if (!down)
             {
-                if (!down)
+                for (int y = Size - 1; y >= 0; y--)
                 {
-                    for (int y = now; y >= 9; y--)
+                    try
                     {
-                        try
+                        if (qr[y][0] == '0')
                         {
-                            qr[y][x] = value[i];
-                            qr[y][x - 1] = value[i + 1];
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = (value[i] == '1' ? '0' : '1');
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = (value[i + 1] == '1' ? '0' : '1');
-                            }
-                        }
-                        catch (Exception error)
-                        {
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = '1';
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = '1';
-                            }
-                        }
-                        i += 2;
-                        now = y;
-                        down = true;
-                    }
-                }
-                else
-                {
-                    for (int y = now; y <= 20; y++)
-                    {
-                        try
-                        {
-                            qr[y][x] = value[i];
-                            qr[y][x - 1] = value[i + 1];
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = (value[i] == '1' ? '0' : '1');
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = (value[i + 1] == '1' ? '0' : '1');
-                            }
-                        }
-                        catch (Exception error)
-                        {
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = '1';
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = '1';
-                            }
-                        }
 
-                        i += 2;
-                        now = y;
-                        down = false;
+                            if (MaskArr(0, y) == 0)
+                            {
+                                qr[y][0] = (value[i] == '1' ? '0' : '1');
+                            }
+                            else
+                            {
+                                qr[y][0] = value[i];
+                            }
+                            i++;
+                        }
                     }
+                    catch (Exception error)
+                    {
+                        if (MaskArr(0, y) == 0)
+                        {
+                            qr[y][0] = '1';
+                        }
+                    }
+                    down = true;
                 }
             }
-            now = 20;
-            for (int x = 12; x >= 9; x -= 2)
+            else
             {
-                if (!down)
+                for (int y = 0; y < Size; y++)
                 {
-                    for (int y = 20; y >= 0; y--)
+                    try
                     {
-
-                        if (y == 6)
+                        if (qr[y][0] == '0')
                         {
-                            continue;
+                            qr[y][0] = value[i];
+                            if (MaskArr(0, y) == 0)
+                            {
+                                qr[y][0] = (value[i] == '1' ? '0' : '1');
+                            }
+                            else
+                            {
+                                qr[y][0] = value[i];
+                            }
+                            i++;
                         }
-                        try
-                        {
-                            qr[y][x] = value[i];
-                            qr[y][x - 1] = value[i + 1];
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = (value[i] == '1' ? '0' : '1');
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = (value[i + 1] == '1' ? '0' : '1');
-                            }
-                        } catch (Exception error)
-                        {
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = '1';
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = '1';
-                            }
-                        }
-
-
-                        i += 2;
-                        now = y;
-                        down = true;
                     }
-
-                }
-                else
-                {
-                    for (int y = 0; y <= 20; y++)
+                    catch (Exception error)
                     {
-                        if (y == 6)
+                        if (MaskArr(0, y) == 0)
                         {
-                            continue;
+                            qr[y][0] = '1';
                         }
-                        try
-                        {
-                            qr[y][x] = value[i];
-                            qr[y][x - 1] = value[i + 1];
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = (value[i] == '1' ? '0' : '1');
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = (value[i + 1] == '1' ? '0' : '1');
-                            }
-                        }
-                        catch (Exception error)
-                        {
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = '1';
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = '1';
-                            }
-                        }
-
-                        i += 2;
-                        now = y;
-                        down = false;
                     }
+                    down = false;
                 }
             }
-            for (int x = 8; x >= 7; x -= 2)
-            {
-                if (!down)
-                {
-                    for (int y = 12; y >= 9; y--)
-                    {
-                        if (x == 6)
-                        {
-                            x--;
-                            continue;
-                        }
-                        try
-                        {
-                            qr[y][x] = value[i];
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = (value[i] == '1' ? '0' : '1');
-                            }
-
-                            if (i + 1 >= value.Length)
-                            {
-                                qr[y][x - 1] = '0';
-
-                            }
-                            else
-                            {
-                                qr[y][x - 1] = value[i + 1];
-                                if (MaskArr(x - 1, y) == 0)
-                                {
-                                    qr[y][x - 1] = (value[i + 1] == '1' ? '0' : '1');
-                                }
-
-                            }
-                        } catch (Exception error)
-                        {
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = '1';
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = '1';
-                            }
-                        }
-                        i += 2;
-                        now = y;
-                        down = true;
-                    }
-
-                }
-                else
-                {
-                    for (int y = 9; y <= 12; y++)
-                    {
-                        if (x == 6)
-                        {
-                            continue;
-                        }
-                        try
-                        {
-                            qr[y][x] = value[i];
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = (value[i] == '1' ? '0' : '1');
-                            }
-
-                            if (i + 1 >= value.Length)
-                            {
-                                qr[y][x - 1] = '0';
-
-                            }
-                            else
-                            {
-                                qr[y][x - 1] = value[i + 1];
-                                if (MaskArr(x - 1, y) == 0)
-                                {
-                                    qr[y][x - 1] = (value[i + 1] == '1' ? '0' : '1');
-                                }
-
-                            }
-                        }
-                        catch (Exception error)
-                        {
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = '1';
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = '1';
-                            }
-                        }
-                        i += 2;
-                        now = y;
-                        down = false;
-                    }
-
-                }
-
-            }
-            for (int x = 5; x >= 1; x -= 2)
-            {
-                if (!down)
-                {
-                    for (int y = 12; y >= 9; y--)
-                    {
-
-                        try
-                        {
-                            qr[y][x] = value[i];
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = (value[i] == '1' ? '0' : '1');
-                            }
-
-                            if (i + 1 >= value.Length)
-                            {
-                                qr[y][x - 1] = '0';
-
-                            }
-                            else
-                            {
-                                qr[y][x - 1] = value[i + 1];
-                                if (MaskArr(x - 1, y) == 0)
-                                {
-                                    qr[y][x - 1] = (value[i + 1] == '1' ? '0' : '1');
-                                }
-
-                            }
-                        }
-                        catch (Exception error)
-                        {
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = '1';
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = '1';
-                            }
-                        }
-                        i += 2;
-                        now = y;
-                        down = true;
-                    }
-
-                }
-                else
-                {
-                    for (int y = 9; y <= 12; y++)
-                    {
-
-                        try
-                        {
-                            qr[y][x] = value[i];
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = (value[i] == '1' ? '0' : '1');
-                            }
-
-                            if (i + 1 >= value.Length)
-                            {
-                                qr[y][x - 1] = '0';
-
-                            }
-                            else
-                            {
-                                qr[y][x - 1] = value[i + 1];
-                                if (MaskArr(x - 1, y) == 0)
-                                {
-                                    qr[y][x - 1] = (value[i + 1] == '1' ? '0' : '1');
-                                }
-
-                            }
-                        }
-                        catch (Exception error)
-                        {
-                            if (MaskArr(x, y) == 0)
-                            {
-                                qr[y][x] = '1';
-                            }
-                            if (MaskArr(x - 1, y) == 0)
-                            {
-                                qr[y][x - 1] = '1';
-                            }
-                        }
-                        i += 2;
-                        now = y;
-                        down = false;
-                    }
-
-                }
-            }*/
-            
-            /*            qr[8][0] = '1';
-                        qr[8][2] = '1';
-                        qr[8][4] = '1';
-                        qr[4][8] = '1';
-                        qr[1][8] = '1';
-                        qr[20][8] = '1';
-                        qr[18][8] = '1';
-                        qr[16][8] = '1';
-                        qr[13][8] = '1';
-                        qr[8][16] = '1';
-                        qr[8][19] = '1';*/
         }
         public void FillSyncPatterns()
         {
@@ -689,7 +393,38 @@ namespace Холст_для_QR
                 Console.WriteLine(m);
             }
         }
-      
+
+        public void FillVersion()
+        {
+
+            if (Version >= 7 - 1)
+            {
+                string version = "";
+                for (int i = 0; version != "" || i < QRProperties.VersionCode.Count(); i++)
+                {
+                    if (Convert.ToInt32(QRProperties.VersionCode[i][0]) == Version + 1)
+                    {
+                        version = QRProperties.VersionCode[i][1];
+                        break;
+                    }
+                }
+                for (int i = Size - 11, k = 0; i < Size - 8; i++)
+                {
+                    for (int j = 0; j < 6; j++, k++)
+                    {
+                        if (version[k] == '1')
+                        {
+                            qr[i][j] = '7';
+                            qr[j][i] = '7';
+                        } else
+                        {
+                            qr[i][j] = '8';
+                            qr[j][i] = '8';
+                        }
+                    }
+                }
+            }
+        }
 
         public int Mask(int x, int y)
         {
@@ -701,8 +436,9 @@ namespace Холст_для_QR
         }
         public void Draw()
         {
-            int correctionLevel = 1;
-            QRCode code = QREncode.Encode("Die die die die die die die die die Die die die die die die die die die die die die die die ok", correctionLevel);
+            string stringToCode = "If we can be completely simulated Do we need a real reality? Don't let words die, let love run dry Like what we did to the rivers we killed off in our near future Ah - ah - ah And mumble some stupid stuff Like I saw it coming Pretend it's not happening Us losers do nothing so winners keep winning [Verse 3] Sit Fetch your leash Dictated economy Show me Your belly Forgotten ecology Stay Okay, eat Human psychology G00dboi Here's a treat Hungry for energy[Verse 4] We are searching Following our human instincts Looking for ghosts of the non - existing kind Who make us whole from the very beginning We keep chasing Dreaming about the perfect being Perfect parents who are non - existing Our bodies grew, our minds stayed the same[Bridge] Now darling, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? Darling, darling Hey honey, where do we go from here? Hey honey, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? To where? ";
+            int correctionLevel = 3; 
+            QRCode code = QREncode.Encode(stringToCode, correctionLevel);
             Size = QRProperties.FieldSize[code.Version];
             Version = code.Version;
             Console.WriteLine($"\n{code.Code.Length}");
@@ -722,6 +458,7 @@ namespace Холст_для_QR
             FillSearchPatterns();
             FillAlignmentPatterns();
             FillSyncPatterns();
+            FillVersion();
             FillMask(correctionLevel);
             FillData(code.Code);
 
@@ -734,13 +471,13 @@ namespace Холст_для_QR
                 }
                 Console.WriteLine();
             }
-
             for (int i = 0; i < Size; i++)
             {
-
+                
                 dataGridView1.Columns.Add("", "");
-                dataGridView1.Columns[i].Width = 10;
+                dataGridView1.Columns[i].Width = 4;
                 dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Height = 4;
             }
 
             for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++)
@@ -750,7 +487,8 @@ namespace Холст_для_QR
                     if (qr[i][j] == '1')
                     {
                         dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
-                    } else if (qr[i][j] == '2')
+                    }
+                    else if (qr[i][j] == '2')
                     {
                         dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
                     }
@@ -758,7 +496,7 @@ namespace Холст_для_QR
                     {
                         dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
                     }
-                    else if (qr[i][j] == '4') 
+                    else if (qr[i][j] == '4')
                     {
                         dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
                     }
@@ -770,11 +508,56 @@ namespace Холст_для_QR
                     {
                         dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
                     }
+                    else if (qr[i][j] == '7')
+                    {
+                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
+                    }
+                    else if (qr[i][j] == '8')
+                    {
+                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
+                    }
                     else
                     {
                         dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
                     }
-                    
+
+                    /*                    if (qr[i][j] == '1')
+                                        {
+                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
+                                        }
+                                        else if (qr[i][j] == '2')
+                                        {
+                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Green;
+                                        }
+                                        else if (qr[i][j] == '3')
+                                        {
+                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Purple;
+                                        }
+                                        else if (qr[i][j] == '4')
+                                        {
+                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Red;
+                                        }
+                                        else if (qr[i][j] == '5')
+                                        {
+                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
+                                        }
+                                        else if (qr[i][j] == '6')
+                                        {
+                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Yellow;
+                                        }
+                                        else if (qr[i][j] == '7')
+                                        {
+                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Blue;
+                                        }
+                                        else if (qr[i][j] == '8')
+                                        {
+                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Pink;
+                                        }
+                                        else
+                                        {
+                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
+                                        }*/
+
                 }
             }
         }
@@ -785,6 +568,11 @@ namespace Холст_для_QR
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

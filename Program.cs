@@ -12,7 +12,6 @@ namespace Холст_для_QR
     {
         static void Main()
         {
-            Console.WriteLine(QRProperties.VersionCode);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
