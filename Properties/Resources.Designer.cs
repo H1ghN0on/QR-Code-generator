@@ -59,15 +59,5 @@ namespace Холст_для_QR.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap katakuri {
-            get {
-                object obj = ResourceManager.GetObject("katakuri", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

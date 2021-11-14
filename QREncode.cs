@@ -67,7 +67,7 @@ namespace Холст_для_QR
                 ByteString += or ? "00010001" : "11101100";
                 or = !or;
             }
-             Console.WriteLine($"Битовая строка с служебной информацией: {ByteString}");
+ /*            Console.WriteLine($"Битовая строка с служебной информацией: {ByteString}");*/
         }
         private static void SetHeader()
         {
@@ -87,7 +87,7 @@ namespace Холст_для_QR
                     header = "0" + header;
                 }
             }
-            Console.WriteLine($"ByteString: {ByteString}");
+/*            Console.WriteLine($"ByteString: {ByteString}");*/
             ByteString = encodingMethod + header + ByteString;
             if (ByteString.Length > QRProperties.Size[CorrectionLevel][Version])
             {
@@ -95,12 +95,12 @@ namespace Холст_для_QR
                 Version += 1;
                 SetHeader();
             }
-            Console.WriteLine($"encodingMethod: {encodingMethod}");
-            Console.WriteLine($"header: {header}");
+/*            Console.WriteLine($"encodingMethod: {encodingMethod}");
+            Console.WriteLine($"header: {header}");*/
         }
         private static void SetBlocks()
         {
-            Console.WriteLine($"Версия: {Version}");
+            /*Console.WriteLine($"Версия: {Version}");*/
             int blockValue, blockRemain;
             BlockNumber = QRProperties.Blocks[CorrectionLevel][Version];
             Blocks = new Block[BlockNumber];
@@ -114,7 +114,7 @@ namespace Холст_для_QR
                     Blocks[i].size++;
                 }
             }
-            Console.WriteLine($"Блоки: {BlockNumber}");
+            /*Console.WriteLine($"Блоки: {BlockNumber}");*/
         }
         private static void FillBlocks()
         {
@@ -133,7 +133,7 @@ namespace Холст_для_QR
                     Blocks[i].data.Add(Convert.ToInt32(str, 2));
                 }
             }
-            for (int i = 0; i < Blocks.Length; i++)
+            /*for (int i = 0; i < Blocks.Length; i++)
             {
                 Console.Write($"Размер: {Blocks[i].size}, блок: ");
                 for (int k = 0; k < Blocks[i].data.Count; k++)
@@ -141,12 +141,12 @@ namespace Холст_для_QR
                     Console.Write($"{Blocks[i].data[k]} ");
                 }
                 Console.WriteLine();
-            }
+            }*/
         }
         private static void SetByteCorrection()
         {
-            Console.WriteLine();
-            Console.WriteLine("Байты коррекции:");
+/*            Console.WriteLine();
+            Console.WriteLine("Байты коррекции:");*/
             int i;
  
             for (i = 0; i < QRProperties.ByteCorrection.Polynomial.Length; i++)
@@ -209,7 +209,7 @@ namespace Холст_для_QR
                             3.Найти соответствующее В значение в таблице 7 и произвести опеацию побитового сложения по модулю 2 (XOR, во многих языках программирования оператор ^) 
                             с i-м значением подготовленного массива и записать полученное значение в i-ю ячейку подготовленного массива.
                         */
-                        Console.Write("TEMPARRAY: ");
+                        /*Console.Write("TEMPARRAY: ");*/
                         for (int j = 1; j < tempArray.Length; j++)
                         {
                             tempArray[j - 1] = tempArray[j];
@@ -225,12 +225,12 @@ namespace Холст_для_QR
                             poly[j] %= 255;
                             tempArray[j] = QRProperties.Galois[0][poly[j]] ^ tempArray[j];
                         }
-                        for (int j = 1; j < tempArray.Length; j++)
+                       /* for (int j = 1; j < tempArray.Length; j++)
                         {
                             Console.Write($"{tempArray[j - 1]} ");
                         }
                         Console.Write($"{tempArray[tempArray.Length - 1]}");
-                        Console.WriteLine();
+                        Console.WriteLine();*/
                     } else
                     {
                         for (int j = 1; j < tempArray.Length; j++)
@@ -245,11 +245,11 @@ namespace Холст_для_QR
                 {
                     ByteCorrectionBlocks[block][f] = tempArray[f];
                 }
-                foreach (int number in ByteCorrectionBlocks[block])
+                /*foreach (int number in ByteCorrectionBlocks[block])
                 {
                     Console.Write("{0} ", number);
                 }
-                Console.WriteLine();
+                Console.WriteLine();*/
             }
         }
         private static void MergeBlocks()
@@ -267,7 +267,7 @@ namespace Холст_для_QR
             }
             data = new string[BlocksSize + ByteCorrectionBlocks[0].Length * BlockNumber];
             Console.WriteLine();
-            Console.WriteLine($"Размер строки {data.Length}");
+            /*Console.WriteLine($"Размер строки {data.Length}");*/
             for (int i = 0; i < Blocks[0].size; i++)
             {
                 for (int j = 0; j < BlockNumber; j++, k++)
@@ -307,7 +307,7 @@ namespace Холст_для_QR
             }
             int index = 0;
             Console.WriteLine();
-            foreach (string number in data)
+            /*foreach (string number in data)
             {
                 Console.Write($"{number} ");
                 index++;
@@ -322,7 +322,7 @@ namespace Холст_для_QR
             foreach (string number in data)
             {
                 Console.Write($"{number} ");
-            }
+            }*/
         }
 
         public static QRCode Encode(string value, int correctionLevel)

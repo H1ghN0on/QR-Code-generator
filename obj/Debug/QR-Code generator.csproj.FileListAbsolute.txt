@@ -19,10 +19,10 @@ D:\Code\Проекты\QR-Code generator\bin\Debug\Холст для QR.pdb
 D:\Code\Проекты\QR-Code generator\bin\Debug\Newtonsoft.Json.dll
 D:\Code\Проекты\QR-Code generator\bin\Debug\Newtonsoft.Json.xml
 D:\Code\Проекты\QR-Code generator\obj\Debug\QR-Code generator.csproj.AssemblyReference.cache
-D:\Code\Проекты\QR-Code generator\obj\Debug\Холст_для_QR.Form1.resources
 D:\Code\Проекты\QR-Code generator\obj\Debug\Холст_для_QR.Properties.Resources.resources
 D:\Code\Проекты\QR-Code generator\obj\Debug\QR-Code generator.csproj.GenerateResource.cache
 D:\Code\Проекты\QR-Code generator\obj\Debug\QR-Code generator.csproj.CoreCompileInputs.cache
 D:\Code\Проекты\QR-Code generator\obj\Debug\QR-Code generator.csproj.CopyComplete
 D:\Code\Проекты\QR-Code generator\obj\Debug\Холст для QR.exe
 D:\Code\Проекты\QR-Code generator\obj\Debug\Холст для QR.pdb
+D:\Code\Проекты\QR-Code generator\obj\Debug\Холст_для_QR.QrForm.resources

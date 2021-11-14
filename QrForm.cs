@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace Холст_для_QR
 {
-    public partial class Form1 : Form
+    public partial class QrForm : Form
     {
+        private bool activeButton = false;
+        TextBox tb;
         public char[][] qr;
         private int Size { get; set; } 
         private int Version { get; set; }
-        public Form1()
+        public QrForm()
         {
             InitializeComponent();
             Draw();
-
         }
-
         public void FillSearchPatterns()
         {
             for (int i = 0; i < 7; i++)
@@ -393,7 +393,6 @@ namespace Холст_для_QR
                 Console.WriteLine(m);
             }
         }
-
         public void FillVersion()
         {
 
@@ -436,8 +435,10 @@ namespace Холст_для_QR
         }
         public void Draw()
         {
-            string stringToCode = "If we can be completely simulated Do we need a real reality? Don't let words die, let love run dry Like what we did to the rivers we killed off in our near future Ah - ah - ah And mumble some stupid stuff Like I saw it coming Pretend it's not happening Us losers do nothing so winners keep winning [Verse 3] Sit Fetch your leash Dictated economy Show me Your belly Forgotten ecology Stay Okay, eat Human psychology G00dboi Here's a treat Hungry for energy[Verse 4] We are searching Following our human instincts Looking for ghosts of the non - existing kind Who make us whole from the very beginning We keep chasing Dreaming about the perfect being Perfect parents who are non - existing Our bodies grew, our minds stayed the same[Bridge] Now darling, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? Darling, darling Hey honey, where do we go from here? Hey honey, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? To where? ";
-            int correctionLevel = 3; 
+            string anecToCode = "Студент сдаёт экзамен по философии. Профессор спрашивает: - Что вы знаете по теме? - Я отвечу словами Сократа, я знаю что я ничего не знаю. - Интересная мысль. Но мне ближе философия Диогена, - парировал профессор. А потом залез в бочку и начал яростно дрочить";
+            string songToCode = "If we can be completely simulated Do we need a real reality? Don't let words die, let love run dry Like what we did to the rivers we killed off in our near future Ah - ah - ah And mumble some stupid stuff Like I saw it coming Pretend it's not happening Us losers do nothing so winners keep winning [Verse 3] Sit Fetch your leash Dictated economy Show me Your belly Forgotten ecology Stay Okay, eat Human psychology G00dboi Here's a treat Hungry for energy[Verse 4] We are searching Following our human instincts Looking for ghosts of the non - existing kind Who make us whole from the very beginning We keep chasing Dreaming about the perfect being Perfect parents who are non - existing Our bodies grew, our minds stayed the same[Bridge] Now darling, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? Darling, darling Hey honey, where do we go from here? Hey honey, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? To where?";
+            string stringToCode = "KAIDO1342341234123412341234412";
+            int correctionLevel = 3;
             QRCode code = QREncode.Encode(stringToCode, correctionLevel);
             Size = QRProperties.FieldSize[code.Version];
             Version = code.Version;
@@ -461,23 +462,43 @@ namespace Холст_для_QR
             FillVersion();
             FillMask(correctionLevel);
             FillData(code.Code);
-
-            Console.WriteLine(QRProperties.FieldSize[code.Version]);
-            for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++)
+            Color purple = Color.FromArgb(164, 6, 203);
+            QrCanvas.Image = new Bitmap(QrCanvas.Width, QrCanvas.Height);
+            Graphics g = Graphics.FromImage(QrCanvas.Image);
+            Pen blackPen = new Pen(purple);
+            Brush blackBrush = Brushes.DarkOrchid;
+            int size = QrCanvas.Width / QRProperties.FieldSize[code.Version];
+            for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++) {
+                for (int j = 0; j < QRProperties.FieldSize[code.Version]; j++)
+                {
+                    if (qr[i][j] == '1' || qr[i][j] == '3' || qr[i][j] == '6' || qr[i][j] == '7')
+                    {
+                        g.FillRectangle(blackBrush, i * size, j * size, size, size);
+                    }
+                }
+            }
+/*
+            Console.WriteLine(QRProperties.FieldSize[code.Version]);*/
+/*            for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++)
             {
                 for (int j = 0; j < QRProperties.FieldSize[code.Version]; j++)
                 {
                     Console.Write("{0}", qr[i][j]);
                 }
                 Console.WriteLine();
-            }
-            for (int i = 0; i < Size; i++)
+            }*/
+            /*for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++)
             {
                 
-                dataGridView1.Columns.Add("", "");
-                dataGridView1.Columns[i].Width = 4;
+                dataGridView1.Columns.Add("","");
+                dataGridView1.Columns[i].Width = dataGridView1.Width / Size;
+               
+            }
+
+            for (int i  = 0; i < QRProperties.FieldSize[code.Version]; i++)
+            {
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Height = 4;
+                dataGridView1.Rows[i].Height = dataGridView1.Width / Size;
             }
 
             for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++)
@@ -520,59 +541,39 @@ namespace Холст_для_QR
                     {
                         dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
                     }
-
-                    /*                    if (qr[i][j] == '1')
-                                        {
-                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
-                                        }
-                                        else if (qr[i][j] == '2')
-                                        {
-                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Green;
-                                        }
-                                        else if (qr[i][j] == '3')
-                                        {
-                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Purple;
-                                        }
-                                        else if (qr[i][j] == '4')
-                                        {
-                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Red;
-                                        }
-                                        else if (qr[i][j] == '5')
-                                        {
-                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
-                                        }
-                                        else if (qr[i][j] == '6')
-                                        {
-                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Yellow;
-                                        }
-                                        else if (qr[i][j] == '7')
-                                        {
-                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Blue;
-                                        }
-                                        else if (qr[i][j] == '8')
-                                        {
-                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Pink;
-                                        }
-                                        else
-                                        {
-                                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
-                                        }*/
-
                 }
+            }*/
+            
+        }
+
+        private void HandleCloseButtonClick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void HandleContentButtonClick(object sender, EventArgs e)
+        {
+
+            if (!activeButton)
+            {
+                this.ColorButton.Location = new Point(this.ColorButton.Location.X, this.ColorButton.Location.Y + 70);
+                this.LogoButton.Location = new Point(this.LogoButton.Location.X, this.LogoButton.Location.Y + 70);
+                activeButton = true;
+            } else
+            {
+                this.ColorButton.Location = new Point(this.ColorButton.Location.X, this.ColorButton.Location.Y - 70);
+                this.LogoButton.Location = new Point(this.LogoButton.Location.X, this.LogoButton.Location.Y - 70);
+                activeButton = false;
             }
+
         }
 
-        private void picture_Click(object sender, EventArgs e)
+        private void HandleColorButtonClick(object sender, EventArgs e)
         {
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void HandleLogoButtonClick(object sender, EventArgs e)
         {
 
         }
