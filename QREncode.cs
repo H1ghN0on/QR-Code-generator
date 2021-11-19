@@ -25,7 +25,9 @@ namespace Холст_для_QR
 
         private static void ToBytes(string value, int correctionLevel)
         {
+            ByteString = "";
             CorrectionLevel = correctionLevel;
+            Console.WriteLine($"VALUE {value}");
             UTF8Encoding ascii = new UTF8Encoding();
             byte[] bytes = ascii.GetBytes(value);
             foreach (Byte b in bytes)
@@ -43,15 +45,7 @@ namespace Холст_для_QR
             bool or = false;
             for (int i = 0; i < QRProperties.Size[CorrectionLevel].Length; i++)
             {
-                if (ByteString.Length < QRProperties.Size[CorrectionLevel][i])
-                {
-                    Version = i;
-                    break;
-                }
-            }
-            for (int i = 0; i < QRProperties.Size[CorrectionLevel].Length; i++)
-            {
-                if (ByteString.Length < QRProperties.Size[CorrectionLevel][i])
+                if (ByteString.Length <= QRProperties.Size[CorrectionLevel][i])
                 {
                     Version = i;
                     break;
@@ -67,7 +61,7 @@ namespace Холст_для_QR
                 ByteString += or ? "00010001" : "11101100";
                 or = !or;
             }
- /*            Console.WriteLine($"Битовая строка с служебной информацией: {ByteString}");*/
+/*            Console.WriteLine($"Битовая строка с служебной информацией: {ByteString}");*/
         }
         private static void SetHeader()
         {
@@ -93,14 +87,14 @@ namespace Холст_для_QR
             {
                 Console.WriteLine("THIS SHIT WORKS");
                 Version += 1;
-                SetHeader();
+               
             }
-/*            Console.WriteLine($"encodingMethod: {encodingMethod}");
-            Console.WriteLine($"header: {header}");*/
+            Console.WriteLine($"encodingMethod: {encodingMethod}");
+            Console.WriteLine($"header: {header}");
         }
         private static void SetBlocks()
         {
-            /*Console.WriteLine($"Версия: {Version}");*/
+            Console.WriteLine($"Версия: {Version}");
             int blockValue, blockRemain;
             BlockNumber = QRProperties.Blocks[CorrectionLevel][Version];
             Blocks = new Block[BlockNumber];
@@ -114,7 +108,7 @@ namespace Холст_для_QR
                     Blocks[i].size++;
                 }
             }
-            /*Console.WriteLine($"Блоки: {BlockNumber}");*/
+            Console.WriteLine($"Блоки: {BlockNumber}");
         }
         private static void FillBlocks()
         {
@@ -133,7 +127,7 @@ namespace Холст_для_QR
                     Blocks[i].data.Add(Convert.ToInt32(str, 2));
                 }
             }
-            /*for (int i = 0; i < Blocks.Length; i++)
+            for (int i = 0; i < Blocks.Length; i++)
             {
                 Console.Write($"Размер: {Blocks[i].size}, блок: ");
                 for (int k = 0; k < Blocks[i].data.Count; k++)
@@ -141,7 +135,7 @@ namespace Холст_для_QR
                     Console.Write($"{Blocks[i].data[k]} ");
                 }
                 Console.WriteLine();
-            }*/
+            }
         }
         private static void SetByteCorrection()
         {
@@ -245,7 +239,7 @@ namespace Холст_для_QR
                 {
                     ByteCorrectionBlocks[block][f] = tempArray[f];
                 }
-                /*foreach (int number in ByteCorrectionBlocks[block])
+/*                foreach (int number in ByteCorrectionBlocks[block])
                 {
                     Console.Write("{0} ", number);
                 }
@@ -307,7 +301,7 @@ namespace Холст_для_QR
             }
             int index = 0;
             Console.WriteLine();
-            /*foreach (string number in data)
+/*            foreach (string number in data)
             {
                 Console.Write($"{number} ");
                 index++;

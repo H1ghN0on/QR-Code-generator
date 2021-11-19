@@ -10,6 +10,7 @@ namespace Холст_для_QR
     
     static class Program
     {
+        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();

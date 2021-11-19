@@ -117,34 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="QrCanvas.Location" type="System.Drawing.Point, System.Drawing">
-    <value>722, 132</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="qrCanvas.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
   </data>
-  <data name="QrCanvas.Size" type="System.Drawing.Size, System.Drawing">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="qrCanvas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>704, 102</value>
+  </data>
+  <data name="qrCanvas.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 300</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="QrCanvas.TabIndex" type="System.Int32, mscorlib">
+  <data name="qrCanvas.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;QrCanvas.Name" xml:space="preserve">
-    <value>QrCanvas</value>
+  <data name="&gt;&gt;qrCanvas.Name" xml:space="preserve">
+    <value>qrCanvas</value>
   </data>
-  <data name="&gt;&gt;QrCanvas.Type" xml:space="preserve">
+  <data name="&gt;&gt;qrCanvas.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;QrCanvas.Parent" xml:space="preserve">
+  <data name="&gt;&gt;qrCanvas.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;QrCanvas.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;qrCanvas.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="CloseButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="CloseButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 19.8000011pt</value>
+  </data>
+  <data name="CloseButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
   </data>
   <data name="CloseButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>1025, 9</value>
@@ -171,170 +178,517 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CloseButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ContentButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="ContentButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Comic Sans MS, 12pt</value>
-  </data>
-  <data name="ContentButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 147</value>
-  </data>
-  <data name="ContentButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 52</value>
-  </data>
-  <data name="ContentButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="ContentButton.Text" xml:space="preserve">
-    <value>Изменить содержимое</value>
-  </data>
-  <data name="&gt;&gt;ContentButton.Name" xml:space="preserve">
-    <value>ContentButton</value>
-  </data>
-  <data name="&gt;&gt;ContentButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ContentButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ContentButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="ColorButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="ColorButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Comic Sans MS, 12pt</value>
-  </data>
-  <data name="ColorButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Off</value>
-  </data>
-  <data name="ColorButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 308</value>
-  </data>
-  <data name="ColorButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 52</value>
-  </data>
-  <data name="ColorButton.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="ColorButton.Text" xml:space="preserve">
-    <value>Изменить цвет</value>
-  </data>
-  <data name="&gt;&gt;ColorButton.Name" xml:space="preserve">
-    <value>ColorButton</value>
-  </data>
-  <data name="&gt;&gt;ColorButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColorButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ColorButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="LogoButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="contentInput.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
   </data>
-  <data name="LogoButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Comic Sans MS, 12pt</value>
+  <data name="contentInput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 10.2pt</value>
   </data>
-  <data name="LogoButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Off</value>
+  <data name="contentInput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 26</value>
   </data>
-  <data name="LogoButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 376</value>
-  </data>
-  <data name="LogoButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 52</value>
-  </data>
-  <data name="LogoButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="LogoButton.Text" xml:space="preserve">
-    <value>Добавить логотип</value>
-  </data>
-  <data name="&gt;&gt;LogoButton.Name" xml:space="preserve">
-    <value>LogoButton</value>
-  </data>
-  <data name="&gt;&gt;LogoButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LogoButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;LogoButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="textBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Comic Sans MS, 13.8pt</value>
-  </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 249</value>
-  </data>
-  <data name="textBox1.Multiline" type="System.Boolean, mscorlib">
+  <data name="contentInput.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>405, 41</value>
+  <data name="contentInput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>405, 29</value>
   </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="contentInput.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>Enter something...</value>
+  <data name="&gt;&gt;contentInput.Name" xml:space="preserve">
+    <value>contentInput</value>
   </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;contentInput.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;contentInput.Parent" xml:space="preserve">
+    <value>contentPanel</value>
   </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;contentInput.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="contentInputHint.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="contentInputHint.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 7.8pt</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 226</value>
+  <data name="contentInputHint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 19</value>
+  <data name="contentInputHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+  <data name="contentInputHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 18</value>
+  </data>
+  <data name="contentInputHint.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
+  <data name="contentInputHint.Text" xml:space="preserve">
     <value>Введите текст:</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="&gt;&gt;contentInputHint.Name" xml:space="preserve">
+    <value>contentInputHint</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+  <data name="&gt;&gt;contentInputHint.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;contentInputHint.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;contentInputHint.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="colorChange.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>45, 23</value>
+  </metadata>
+  <data name="foregroundColorButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="foregroundColorButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="foregroundColorButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 28</value>
+  </data>
+  <data name="foregroundColorButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 31</value>
+  </data>
+  <data name="foregroundColorButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;foregroundColorButton.Name" xml:space="preserve">
+    <value>foregroundColorButton</value>
+  </data>
+  <data name="&gt;&gt;foregroundColorButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;foregroundColorButton.Parent" xml:space="preserve">
+    <value>colorPanel</value>
+  </data>
+  <data name="&gt;&gt;foregroundColorButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="foregroundButtonHint.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 7.8pt</value>
+  </data>
+  <data name="foregroundButtonHint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="foregroundButtonHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 7</value>
+  </data>
+  <data name="foregroundButtonHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 18</value>
+  </data>
+  <data name="foregroundButtonHint.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="foregroundButtonHint.Text" xml:space="preserve">
+    <value>Передний план</value>
+  </data>
+  <data name="&gt;&gt;foregroundButtonHint.Name" xml:space="preserve">
+    <value>foregroundButtonHint</value>
+  </data>
+  <data name="&gt;&gt;foregroundButtonHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;foregroundButtonHint.Parent" xml:space="preserve">
+    <value>colorPanel</value>
+  </data>
+  <data name="&gt;&gt;foregroundButtonHint.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="backgroundButtonHint.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="backgroundButtonHint.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 7.8pt</value>
+  </data>
+  <data name="backgroundButtonHint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="backgroundButtonHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>282, 7</value>
+  </data>
+  <data name="backgroundButtonHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 18</value>
+  </data>
+  <data name="backgroundButtonHint.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="backgroundButtonHint.Text" xml:space="preserve">
+    <value>Задний фон</value>
+  </data>
+  <data name="&gt;&gt;backgroundButtonHint.Name" xml:space="preserve">
+    <value>backgroundButtonHint</value>
+  </data>
+  <data name="&gt;&gt;backgroundButtonHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;backgroundButtonHint.Parent" xml:space="preserve">
+    <value>colorPanel</value>
+  </data>
+  <data name="&gt;&gt;backgroundButtonHint.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="backgroundColorButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="backgroundColorButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="backgroundColorButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 28</value>
+  </data>
+  <data name="backgroundColorButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 31</value>
+  </data>
+  <data name="backgroundColorButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;backgroundColorButton.Name" xml:space="preserve">
+    <value>backgroundColorButton</value>
+  </data>
+  <data name="&gt;&gt;backgroundColorButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;backgroundColorButton.Parent" xml:space="preserve">
+    <value>colorPanel</value>
+  </data>
+  <data name="&gt;&gt;backgroundColorButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="logoUpload.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>190, 23</value>
+  </metadata>
+  <data name="fileUploadButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="fileUploadButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 7.8pt</value>
+  </data>
+  <data name="fileUploadButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="fileUploadButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="fileUploadButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 43</value>
+  </data>
+  <data name="fileUploadButton.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="fileUploadButton.Text" xml:space="preserve">
+    <value>Файл не загружен</value>
+  </data>
+  <data name="&gt;&gt;fileUploadButton.Name" xml:space="preserve">
+    <value>fileUploadButton</value>
+  </data>
+  <data name="&gt;&gt;fileUploadButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fileUploadButton.Parent" xml:space="preserve">
+    <value>uploadPanel</value>
+  </data>
+  <data name="&gt;&gt;fileUploadButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="fileUploadHint.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="fileUploadHint.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 7.8pt</value>
+  </data>
+  <data name="fileUploadHint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="fileUploadHint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="fileUploadHint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 18</value>
+  </data>
+  <data name="fileUploadHint.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="fileUploadHint.Text" xml:space="preserve">
+    <value>Загрузите файл:</value>
+  </data>
+  <data name="&gt;&gt;fileUploadHint.Name" xml:space="preserve">
+    <value>fileUploadHint</value>
+  </data>
+  <data name="&gt;&gt;fileUploadHint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fileUploadHint.Parent" xml:space="preserve">
+    <value>uploadPanel</value>
+  </data>
+  <data name="&gt;&gt;fileUploadHint.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 10.8pt</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>731, 439</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 48</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Сгенерировать QR код</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBorderRound.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBorderRound.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="checkBorderRound.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 33</value>
+  </data>
+  <data name="checkBorderRound.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 20</value>
+  </data>
+  <data name="checkBorderRound.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="checkBorderRound.Text" xml:space="preserve">
+    <value>Скруглить границы изображения</value>
+  </data>
+  <data name="&gt;&gt;checkBorderRound.Name" xml:space="preserve">
+    <value>checkBorderRound</value>
+  </data>
+  <data name="&gt;&gt;checkBorderRound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBorderRound.Parent" xml:space="preserve">
+    <value>uploadPanel</value>
+  </data>
+  <data name="&gt;&gt;checkBorderRound.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="uploadPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 384</value>
+  </data>
+  <data name="uploadPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>515, 71</value>
+  </data>
+  <data name="uploadPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;uploadPanel.Name" xml:space="preserve">
+    <value>uploadPanel</value>
+  </data>
+  <data name="&gt;&gt;uploadPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;uploadPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;uploadPanel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="contentPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 240</value>
+  </data>
+  <data name="contentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>487, 64</value>
+  </data>
+  <data name="contentPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Name" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="colorPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 310</value>
+  </data>
+  <data name="colorPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 82</value>
+  </data>
+  <data name="colorPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;colorPanel.Name" xml:space="preserve">
+    <value>colorPanel</value>
+  </data>
+  <data name="&gt;&gt;colorPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;colorPanel.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="logoCanvas.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="logoCanvas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>704, 102</value>
+  </data>
+  <data name="logoCanvas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 75</value>
+  </data>
+  <data name="logoCanvas.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="logoCanvas.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;logoCanvas.Name" xml:space="preserve">
+    <value>logoCanvas</value>
+  </data>
+  <data name="&gt;&gt;logoCanvas.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;logoCanvas.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;logoCanvas.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="contentButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="contentButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 12pt</value>
+  </data>
+  <data name="contentButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="contentButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 177</value>
+  </data>
+  <data name="contentButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 57</value>
+  </data>
+  <data name="contentButton.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="contentButton.Text" xml:space="preserve">
+    <value>Изменить содержимое</value>
+  </data>
+  <data name="&gt;&gt;contentButton.Name" xml:space="preserve">
+    <value>contentButton</value>
+  </data>
+  <data name="&gt;&gt;contentButton.Type" xml:space="preserve">
+    <value>Холст_для_QR.SettingButton, Холст для QR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;contentButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;contentButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="colorButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="colorButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 12pt</value>
+  </data>
+  <data name="colorButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="colorButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 240</value>
+  </data>
+  <data name="colorButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 57</value>
+  </data>
+  <data name="colorButton.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="colorButton.Text" xml:space="preserve">
+    <value>Изменить цвет</value>
+  </data>
+  <data name="&gt;&gt;colorButton.Name" xml:space="preserve">
+    <value>colorButton</value>
+  </data>
+  <data name="&gt;&gt;colorButton.Type" xml:space="preserve">
+    <value>Холст_для_QR.SettingButton, Холст для QR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;colorButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="logoButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="logoButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 12pt</value>
+  </data>
+  <data name="logoButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="logoButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 301</value>
+  </data>
+  <data name="logoButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 68</value>
+  </data>
+  <data name="logoButton.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="logoButton.Text" xml:space="preserve">
+    <value>Вставить изображение</value>
+  </data>
+  <data name="&gt;&gt;logoButton.Name" xml:space="preserve">
+    <value>logoButton</value>
+  </data>
+  <data name="&gt;&gt;logoButton.Type" xml:space="preserve">
+    <value>Холст_для_QR.SettingButton, Холст для QR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;logoButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;logoButton.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1082, 553</value>
+    <value>1086, 538</value>
   </data>
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
@@ -344,6 +698,18 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>QR-Code generator</value>
+  </data>
+  <data name="&gt;&gt;colorChange.Name" xml:space="preserve">
+    <value>colorChange</value>
+  </data>
+  <data name="&gt;&gt;colorChange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;logoUpload.Name" xml:space="preserve">
+    <value>logoUpload</value>
+  </data>
+  <data name="&gt;&gt;logoUpload.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>QrForm</value>

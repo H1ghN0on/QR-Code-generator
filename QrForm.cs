@@ -7,20 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Холст_для_QR
 {
     public partial class QrForm : Form
     {
-        private bool activeButton = false;
-        TextBox tb;
+        List<SettingButton> buttonList = new List<SettingButton>();
+        SettingButton activeButton;
+        Color foreColor = Color.Black, backColor = Color.White;
         public char[][] qr;
-        private int Size { get; set; } 
+        public Image logo;
+        private int Size { get; set; }
         private int Version { get; set; }
         public QrForm()
         {
+
             InitializeComponent();
-            Draw();
+            buttonList.Add(contentButton);
+            buttonList.Add(colorButton);
+            buttonList.Add(logoButton);
+            this.Controls.Remove(uploadPanel);
+            this.Controls.Remove(contentPanel);
+            this.Controls.Remove(colorPanel);
+            foreach (SettingButton btn in buttonList)
+            {
+                btn.BringToFront();
+            }
         }
         public void FillSearchPatterns()
         {
@@ -45,7 +56,7 @@ namespace Холст_для_QR
             }
             for (int i = 0; i < 7; i++)
             {
-                qr[Size - 8][i] = '4'; 
+                qr[Size - 8][i] = '4';
                 qr[i][Size - 8] = '4';
             }
             qr[7][7] = '4';
@@ -110,7 +121,7 @@ namespace Холст_для_QR
             if (Version > 0)
             {
                 int xPoint, yPoint;
-                int []pattern = QRProperties.AlignmentPattern[Version - 1];
+                int[] pattern = QRProperties.AlignmentPattern[Version - 1];
                 for (int i = 0; i < pattern.Length; i++)
                 {
                     for (int j = 0; j < pattern.Length; j++)
@@ -171,11 +182,10 @@ namespace Холст_для_QR
                         {
                             if (qr[y][x] == '0')
                             {
-                                
                                 if (MaskArr(x, y) == 0)
                                 {
                                     qr[y][x] = (value[i] == '1' ? '0' : '1');
-                                } else 
+                                } else
                                 {
                                     qr[y][x] = value[i];
                                 }
@@ -365,7 +375,6 @@ namespace Холст_для_QR
                 {
                     qr[x][8] = '2';
                 }
-                Console.WriteLine(m);
             }
             m = 0;
             for (int x = Size - 1; x > Size - 8; x--, m++)
@@ -390,13 +399,12 @@ namespace Холст_для_QR
                 {
                     qr[8][x] = '2';
                 }
-                Console.WriteLine(m);
             }
         }
         public void FillVersion()
         {
 
-            if (Version >= 7 - 1)
+            if (Version >= 6)
             {
                 string version = "";
                 for (int i = 0; version != "" || i < QRProperties.VersionCode.Count(); i++)
@@ -424,22 +432,34 @@ namespace Холст_для_QR
                 }
             }
         }
-
         public int Mask(int x, int y)
         {
-            return (x / 10+ y/10) % 2;
+            return (x + y) % 2;
         }
         public int MaskArr(int x, int y)
         {
             return (x + y) % 2;
         }
+        public void FillBackground(Pen pen, int x1, int y1, int width)
+        {
+            Graphics f = this.CreateGraphics();
+            f.DrawLine(pen, x1 - pen.Width, y1 - pen.Width / 2, x1 + width + pen.Width, y1 - pen.Width / 2);
+            f.DrawLine(pen, x1 - pen.Width / 2F, y1, x1 - pen.Width / 2F, y1 + width);
+            f.DrawLine(pen, x1 + width + pen.Width / 2, y1 + width + pen.Width, x1 + width + pen.Width / 2, y1);
+            f.DrawLine(pen, x1 + width + pen.Width / 2, y1 + width + pen.Width / 2, x1 - pen.Width, y1 + width + pen.Width / 2);
+        }
         public void Draw()
         {
             string anecToCode = "Студент сдаёт экзамен по философии. Профессор спрашивает: - Что вы знаете по теме? - Я отвечу словами Сократа, я знаю что я ничего не знаю. - Интересная мысль. Но мне ближе философия Диогена, - парировал профессор. А потом залез в бочку и начал яростно дрочить";
             string songToCode = "If we can be completely simulated Do we need a real reality? Don't let words die, let love run dry Like what we did to the rivers we killed off in our near future Ah - ah - ah And mumble some stupid stuff Like I saw it coming Pretend it's not happening Us losers do nothing so winners keep winning [Verse 3] Sit Fetch your leash Dictated economy Show me Your belly Forgotten ecology Stay Okay, eat Human psychology G00dboi Here's a treat Hungry for energy[Verse 4] We are searching Following our human instincts Looking for ghosts of the non - existing kind Who make us whole from the very beginning We keep chasing Dreaming about the perfect being Perfect parents who are non - existing Our bodies grew, our minds stayed the same[Bridge] Now darling, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? Darling, darling Hey honey, where do we go from here? Hey honey, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? To where?";
-            string stringToCode = "KAIDO1342341234123412341234412";
-            int correctionLevel = 3;
-            QRCode code = QREncode.Encode(stringToCode, correctionLevel);
+            string stringToCode = "KAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOH";
+            string theBiggest = "Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас  Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорас";
+            int correctionLevel = 1;
+            if (logo != null)
+            {
+                correctionLevel = 3;
+            }
+            QRCode code = QREncode.Encode(contentInput.Text, correctionLevel);
             Size = QRProperties.FieldSize[code.Version];
             Version = code.Version;
             Console.WriteLine($"\n{code.Code.Length}");
@@ -455,7 +475,8 @@ namespace Холст_для_QR
                     qr[i][j] = '0';
                 }
             }
-
+            float size = Convert.ToSingle(qrCanvas.Width) / Convert.ToSingle(QRProperties.FieldSize[code.Version]);
+            Console.WriteLine($"Размер: {size}");
             FillSearchPatterns();
             FillAlignmentPatterns();
             FillSyncPatterns();
@@ -463,87 +484,92 @@ namespace Холст_для_QR
             FillMask(correctionLevel);
             FillData(code.Code);
             Color purple = Color.FromArgb(164, 6, 203);
-            QrCanvas.Image = new Bitmap(QrCanvas.Width, QrCanvas.Height);
-            Graphics g = Graphics.FromImage(QrCanvas.Image);
-            Pen blackPen = new Pen(purple);
-            Brush blackBrush = Brushes.DarkOrchid;
-            int size = QrCanvas.Width / QRProperties.FieldSize[code.Version];
+            qrCanvas.Image = new Bitmap(qrCanvas.Width, qrCanvas.Height);
+            Graphics g = Graphics.FromImage(qrCanvas.Image);
+            Brush foreBrush = new SolidBrush(foreColor);
+            Brush backBrush = new SolidBrush(backColor);
+            int penWidth = 35;
+            Pen pen = new Pen(backColor, penWidth);
+            Graphics f = this.CreateGraphics();
+            int pointBeginX = this.qrCanvas.Location.X;
+            int pointBeginY = this.qrCanvas.Location.Y;
+            int customWidth = this.qrCanvas.Width;
+
+            FillBackground(pen, pointBeginX, pointBeginY, customWidth);
             for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++) {
                 for (int j = 0; j < QRProperties.FieldSize[code.Version]; j++)
                 {
-                    if (qr[i][j] == '1' || qr[i][j] == '3' || qr[i][j] == '6' || qr[i][j] == '7')
+                  
+                    if (qr[j][i] == '1' || qr[j][i] == '3' || qr[j][i] == '6' || qr[j][i] == '7')
                     {
-                        g.FillRectangle(blackBrush, i * size, j * size, size, size);
+                        g.FillRectangle(foreBrush, i * size, j * size, size, size);
+                    } else
+                    {
+                        g.FillRectangle(backBrush, i * size, j * size, size, size);
                     }
-                }
-            }
-/*
-            Console.WriteLine(QRProperties.FieldSize[code.Version]);*/
-/*            for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++)
-            {
-                for (int j = 0; j < QRProperties.FieldSize[code.Version]; j++)
-                {
-                    Console.Write("{0}", qr[i][j]);
-                }
-                Console.WriteLine();
-            }*/
-            /*for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++)
-            {
-                
-                dataGridView1.Columns.Add("","");
-                dataGridView1.Columns[i].Width = dataGridView1.Width / Size;
-               
-            }
 
-            for (int i  = 0; i < QRProperties.FieldSize[code.Version]; i++)
-            {
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Height = dataGridView1.Width / Size;
-            }
-
-            for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++)
-            {
-                for (int j = 0; j < QRProperties.FieldSize[code.Version]; j++)
-                {
-                    if (qr[i][j] == '1')
-                    {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
-                    }
-                    else if (qr[i][j] == '2')
-                    {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
-                    }
-                    else if (qr[i][j] == '3')
-                    {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
-                    }
-                    else if (qr[i][j] == '4')
-                    {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
-                    }
-                    else if (qr[i][j] == '5')
-                    {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
-                    }
-                    else if (qr[i][j] == '6')
-                    {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
-                    }
-                    else if (qr[i][j] == '7')
-                    {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Black;
-                    }
-                    else if (qr[i][j] == '8')
-                    {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
-                    }
                 }
-            }*/
-            
+            }
+          
+            if (logo != null)
+            {
+                this.logoCanvas.Width = 0;
+                this.logoCanvas.Height = 0;
+                float width = code.Code.Length;
+                width *= 0.15F;
+                float mem = Convert.ToSingle(Math.Floor(Math.Sqrt(width)));
+                for (int i = 0; i < mem; i++)
+                {
+                    this.logoCanvas.Width += Convert.ToInt32(size);
+                    this.logoCanvas.Height += Convert.ToInt32(size);
+                }
+                if (this.checkBorderRound.Checked)
+                {
+                    System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+                    path.AddEllipse(0, 0, this.logoCanvas.Width, this.logoCanvas.Height);
+                    Region rgn = new Region(path);
+                    this.logoCanvas.Region = rgn;
+                } else
+                {
+                    this.logoCanvas.Region = null;
+                }
+                this.logoCanvas.Image = logo;
+                this.logoCanvas.Left = this.qrCanvas.Location.X + this.qrCanvas.Width / 2 - this.logoCanvas.Width / 2;
+                this.logoCanvas.Top = this.qrCanvas.Location.Y + this.qrCanvas.Height / 2 - this.logoCanvas.Height / 2;
+            }
+        }
+
+        private void DeactivateButton()
+        {
+            this.Controls.Remove(activeButton.Panel);
+            for (int i = activeButton.Order + 1; i < buttonList.Count; i++)
+            {
+                buttonList[i].Location = new Point(buttonList[i].Location.X, buttonList[i].Location.Y - 100);
+            }
+            activeButton.Active = false;
+            activeButton = null;
+        }
+        
+        private void HandleSettingButtonClick(object sender, EventArgs e)
+        {
+            var clickedButton = sender as SettingButton;
+            int order = clickedButton.Order;
+            if (activeButton == clickedButton)
+            {
+                DeactivateButton();
+                return;
+            } 
+            if (activeButton != null)
+            {
+                DeactivateButton();
+            }
+            clickedButton.Active = !clickedButton.Active;
+            activeButton = clickedButton;
+            this.Controls.Add(clickedButton.Panel);
+            for (int i = order + 1; i < buttonList.Count; i++)
+            {
+                buttonList[i].Location = new Point(buttonList[i].Location.X, buttonList[i].Location.Y + 100);
+            }
         }
 
         private void HandleCloseButtonClick(object sender, EventArgs e)
@@ -554,20 +580,8 @@ namespace Холст_для_QR
         private void HandleContentButtonClick(object sender, EventArgs e)
         {
 
-            if (!activeButton)
-            {
-                this.ColorButton.Location = new Point(this.ColorButton.Location.X, this.ColorButton.Location.Y + 70);
-                this.LogoButton.Location = new Point(this.LogoButton.Location.X, this.LogoButton.Location.Y + 70);
-                activeButton = true;
-            } else
-            {
-                this.ColorButton.Location = new Point(this.ColorButton.Location.X, this.ColorButton.Location.Y - 70);
-                this.LogoButton.Location = new Point(this.LogoButton.Location.X, this.LogoButton.Location.Y - 70);
-                activeButton = false;
-            }
 
         }
-
         private void HandleColorButtonClick(object sender, EventArgs e)
         {
 
@@ -577,5 +591,60 @@ namespace Холст_для_QR
         {
 
         }
+
+        private void HandleForecolorChooseButtonClick(object sender, EventArgs e)
+        {
+            if (this.colorChange.ShowDialog() != DialogResult.Cancel)
+            {
+                this.foregroundColorButton.BackColor = this.colorChange.Color;
+                if (this.colorChange.Color == Color.White)
+                {
+                    this.foregroundColorButton.ForeColor = Color.Black;
+                }
+                else
+                {
+                    this.foregroundColorButton.ForeColor = this.colorChange.Color;
+                }
+                foreColor = this.colorChange.Color;
+            }
+        }
+
+        private void HandleBackcolorChooseButtonClick(object sender, EventArgs e)
+        {
+            if (this.colorChange.ShowDialog() != DialogResult.Cancel)
+            {
+                this.backgroundColorButton.BackColor = this.colorChange.Color;
+                if (this.colorChange.Color == Color.White)
+                {
+                    this.backgroundColorButton.ForeColor = Color.Black;
+                } else
+                {
+                    this.backgroundColorButton.ForeColor = this.colorChange.Color;
+                }
+                backColor = this.colorChange.Color;
+            }
+        }
+
+        private void HandleFileUploadButtonClick(object sender, EventArgs e)
+        {
+            if (this.logoUpload.ShowDialog() != DialogResult.Cancel)
+            {
+                this.fileUploadButton.Text = this.logoUpload.FileName;
+                logo = Image.FromFile(this.logoUpload.FileName);
+            }
+        }
+
+        private void HandleContentInputChange(object sender, EventArgs e)
+        {
+          
+        }
+
+
+        private void HandleSubmitClick(object sender, EventArgs e)
+        {
+            Draw();
+            Console.WriteLine(this.contentInput.Text);
+        }
+
     }
 }
