@@ -117,39 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="qrCanvas.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Off</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="qrCanvas.Location" type="System.Drawing.Point, System.Drawing">
-    <value>704, 102</value>
-  </data>
-  <data name="qrCanvas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 300</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="qrCanvas.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;qrCanvas.Name" xml:space="preserve">
-    <value>qrCanvas</value>
-  </data>
-  <data name="&gt;&gt;qrCanvas.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;qrCanvas.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;qrCanvas.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="CloseButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="CloseButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 19.8000011pt</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="CloseButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
   </data>
@@ -178,7 +154,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CloseButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="contentInput.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -376,7 +352,7 @@
     <value>Off</value>
   </data>
   <data name="fileUploadButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+    <value>49, 21</value>
   </data>
   <data name="fileUploadButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 43</value>
@@ -397,7 +373,7 @@
     <value>uploadPanel</value>
   </data>
   <data name="&gt;&gt;fileUploadButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="fileUploadHint.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -409,7 +385,7 @@
     <value>Off</value>
   </data>
   <data name="fileUploadHint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+    <value>49, 0</value>
   </data>
   <data name="fileUploadHint.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 18</value>
@@ -430,7 +406,7 @@
     <value>uploadPanel</value>
   </data>
   <data name="&gt;&gt;fileUploadHint.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -442,7 +418,7 @@
     <value>Off</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>731, 439</value>
+    <value>737, 463</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>255, 48</value>
@@ -463,7 +439,76 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;deleteLogoButton.Name" xml:space="preserve">
+    <value>deleteLogoButton</value>
+  </data>
+  <data name="&gt;&gt;deleteLogoButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteLogoButton.Parent" xml:space="preserve">
+    <value>uploadPanel</value>
+  </data>
+  <data name="&gt;&gt;deleteLogoButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkBorderRound.Name" xml:space="preserve">
+    <value>checkBorderRound</value>
+  </data>
+  <data name="&gt;&gt;checkBorderRound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBorderRound.Parent" xml:space="preserve">
+    <value>uploadPanel</value>
+  </data>
+  <data name="&gt;&gt;checkBorderRound.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="uploadPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 405</value>
+  </data>
+  <data name="uploadPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 71</value>
+  </data>
+  <data name="uploadPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;uploadPanel.Name" xml:space="preserve">
+    <value>uploadPanel</value>
+  </data>
+  <data name="&gt;&gt;uploadPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;uploadPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;uploadPanel.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="deleteLogoButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 29</value>
+  </data>
+  <data name="deleteLogoButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="deleteLogoButton.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="deleteLogoButton.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;deleteLogoButton.Name" xml:space="preserve">
+    <value>deleteLogoButton</value>
+  </data>
+  <data name="&gt;&gt;deleteLogoButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteLogoButton.Parent" xml:space="preserve">
+    <value>uploadPanel</value>
+  </data>
+  <data name="&gt;&gt;deleteLogoButton.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="checkBorderRound.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -472,7 +517,7 @@
     <value>Off</value>
   </data>
   <data name="checkBorderRound.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 33</value>
+    <value>294, 33</value>
   </data>
   <data name="checkBorderRound.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 20</value>
@@ -493,31 +538,10 @@
     <value>uploadPanel</value>
   </data>
   <data name="&gt;&gt;checkBorderRound.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="uploadPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 384</value>
-  </data>
-  <data name="uploadPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>515, 71</value>
-  </data>
-  <data name="uploadPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;uploadPanel.Name" xml:space="preserve">
-    <value>uploadPanel</value>
-  </data>
-  <data name="&gt;&gt;uploadPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;uploadPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;uploadPanel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>1</value>
   </data>
   <data name="contentPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 240</value>
+    <value>63, 271</value>
   </data>
   <data name="contentPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>487, 64</value>
@@ -535,10 +559,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="colorPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 310</value>
+    <value>63, 331</value>
   </data>
   <data name="colorPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 82</value>
@@ -556,16 +580,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorPanel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="logoCanvas.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
   </data>
   <data name="logoCanvas.Location" type="System.Drawing.Point, System.Drawing">
-    <value>704, 102</value>
+    <value>38, 41</value>
   </data>
   <data name="logoCanvas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 75</value>
+    <value>73, 67</value>
   </data>
   <data name="logoCanvas.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -580,7 +604,7 @@
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;logoCanvas.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>qrPanel</value>
   </data>
   <data name="&gt;&gt;logoCanvas.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -595,7 +619,7 @@
     <value>Off</value>
   </data>
   <data name="contentButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 177</value>
+    <value>63, 198</value>
   </data>
   <data name="contentButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 57</value>
@@ -616,7 +640,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;contentButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>9</value>
   </data>
   <data name="colorButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -628,7 +652,7 @@
     <value>Off</value>
   </data>
   <data name="colorButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 240</value>
+    <value>63, 261</value>
   </data>
   <data name="colorButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 57</value>
@@ -649,7 +673,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;colorButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="logoButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -661,7 +685,7 @@
     <value>Off</value>
   </data>
   <data name="logoButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 301</value>
+    <value>63, 322</value>
   </data>
   <data name="logoButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 68</value>
@@ -682,13 +706,124 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;logoButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
+  </data>
+  <data name="saveButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="saveButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 10.2pt</value>
+  </data>
+  <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>674, 538</value>
+  </data>
+  <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 45</value>
+  </data>
+  <data name="saveButton.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="saveButton.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
+    <value>saveButton</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="qrSave.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>327, 23</value>
+  </metadata>
+  <data name="qrSave.Filter" xml:space="preserve">
+    <value>Image Files(*.bmp)|*.bmp|Image Files(*.jpg)|*.jpg|Image Files(*.png)|*.png</value>
+  </data>
+  <data name="qrCanvas.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Off</value>
+  </data>
+  <data name="qrCanvas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>38, 41</value>
+  </data>
+  <data name="qrCanvas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 300</value>
+  </data>
+  <data name="qrCanvas.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;qrCanvas.Name" xml:space="preserve">
+    <value>qrCanvas</value>
+  </data>
+  <data name="&gt;&gt;qrCanvas.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;qrCanvas.Parent" xml:space="preserve">
+    <value>qrPanel</value>
+  </data>
+  <data name="&gt;&gt;qrCanvas.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="qrPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>674, 71</value>
+  </data>
+  <data name="qrPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>375, 375</value>
+  </data>
+  <data name="qrPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;qrPanel.Name" xml:space="preserve">
+    <value>qrPanel</value>
+  </data>
+  <data name="&gt;&gt;qrPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;qrPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;qrPanel.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="printButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="printButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 10.2pt</value>
+  </data>
+  <data name="printButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>919, 538</value>
+  </data>
+  <data name="printButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 45</value>
+  </data>
+  <data name="printButton.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="printButton.Text" xml:space="preserve">
+    <value>Распечатать</value>
+  </data>
+  <data name="&gt;&gt;printButton.Name" xml:space="preserve">
+    <value>printButton</value>
+  </data>
+  <data name="&gt;&gt;printButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;printButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;printButton.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1086, 538</value>
+    <value>1086, 633</value>
   </data>
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
@@ -710,6 +845,12 @@
   </data>
   <data name="&gt;&gt;logoUpload.Type" xml:space="preserve">
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;qrSave.Name" xml:space="preserve">
+    <value>qrSave</value>
+  </data>
+  <data name="&gt;&gt;qrSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>QrForm</value>

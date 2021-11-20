@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Холст_для_QR
         public Image logo;
         private int Size { get; set; }
         private int Version { get; set; }
+
         public QrForm()
         {
 
@@ -28,6 +30,8 @@ namespace Холст_для_QR
             this.Controls.Remove(uploadPanel);
             this.Controls.Remove(contentPanel);
             this.Controls.Remove(colorPanel);
+            this.saveButton.Visible = false;
+   
             foreach (SettingButton btn in buttonList)
             {
                 btn.BringToFront();
@@ -450,6 +454,7 @@ namespace Холст_для_QR
         }
         public void Draw()
         {
+            this.qrPanel.Controls.Add(this.logoCanvas);
             string anecToCode = "Студент сдаёт экзамен по философии. Профессор спрашивает: - Что вы знаете по теме? - Я отвечу словами Сократа, я знаю что я ничего не знаю. - Интересная мысль. Но мне ближе философия Диогена, - парировал профессор. А потом залез в бочку и начал яростно дрочить";
             string songToCode = "If we can be completely simulated Do we need a real reality? Don't let words die, let love run dry Like what we did to the rivers we killed off in our near future Ah - ah - ah And mumble some stupid stuff Like I saw it coming Pretend it's not happening Us losers do nothing so winners keep winning [Verse 3] Sit Fetch your leash Dictated economy Show me Your belly Forgotten ecology Stay Okay, eat Human psychology G00dboi Here's a treat Hungry for energy[Verse 4] We are searching Following our human instincts Looking for ghosts of the non - existing kind Who make us whole from the very beginning We keep chasing Dreaming about the perfect being Perfect parents who are non - existing Our bodies grew, our minds stayed the same[Bridge] Now darling, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? Darling, darling Hey honey, where do we go from here? Hey honey, where do we go from here? Now darling, where do we go from here? Now darling, where do we go from here? To where?";
             string stringToCode = "KAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOH";
@@ -457,7 +462,11 @@ namespace Холст_для_QR
             int correctionLevel = 1;
             if (logo != null)
             {
+                this.logoCanvas.Visible = true;
                 correctionLevel = 3;
+            } else
+            {
+                this.logoCanvas.Visible = false;
             }
             QRCode code = QREncode.Encode(contentInput.Text, correctionLevel);
             Size = QRProperties.FieldSize[code.Version];
@@ -488,14 +497,14 @@ namespace Холст_для_QR
             Graphics g = Graphics.FromImage(qrCanvas.Image);
             Brush foreBrush = new SolidBrush(foreColor);
             Brush backBrush = new SolidBrush(backColor);
-            int penWidth = 35;
+            int penWidth = 55;
             Pen pen = new Pen(backColor, penWidth);
             Graphics f = this.CreateGraphics();
             int pointBeginX = this.qrCanvas.Location.X;
             int pointBeginY = this.qrCanvas.Location.Y;
             int customWidth = this.qrCanvas.Width;
-
-            FillBackground(pen, pointBeginX, pointBeginY, customWidth);
+            this.qrPanel.BackColor = backColor;
+/*            FillBackground(pen, this.qrPanel.Location.X + 50, this.qrPanel.Location.Y + 50, this.qrCanvas.Width);*/
             for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++) {
                 for (int j = 0; j < QRProperties.FieldSize[code.Version]; j++)
                 {
@@ -537,6 +546,8 @@ namespace Холст_для_QR
                 this.logoCanvas.Left = this.qrCanvas.Location.X + this.qrCanvas.Width / 2 - this.logoCanvas.Width / 2;
                 this.logoCanvas.Top = this.qrCanvas.Location.Y + this.qrCanvas.Height / 2 - this.logoCanvas.Height / 2;
             }
+            this.saveButton.Visible = true;
+            this.logoCanvas.BringToFront();
         }
 
         private void DeactivateButton()
@@ -638,6 +649,45 @@ namespace Холст_для_QR
         {
           
         }
+
+        private void HandleDeleteLogoButtonClick(object sender, EventArgs e)
+        {
+            this.fileUploadButton.Text = "Файл не загружен";
+            logo = null;
+        }
+
+        private void HandleSaveButtonClick(object sender, EventArgs e)
+        {
+            if (qrSave.ShowDialog() == DialogResult.OK) //если в диалоговом окне нажата кнопка "ОК"
+            {
+                try
+                {
+                    Console.WriteLine(logoCanvas.Image);
+                    for (int i = 0; i < qrPanel.Controls.Count; i++)
+                    {
+                        Console.WriteLine(qrPanel.Controls[i].Name);
+                    }
+                    Bitmap bmp = new Bitmap(qrPanel.ClientSize.Width, qrPanel.ClientSize.Height);
+                    using (Graphics G = Graphics.FromImage(bmp))
+                    {
+                        qrPanel.DrawToBitmap(bmp, qrPanel.ClientRectangle);
+                        logoCanvas.DrawToBitmap(bmp, new Rectangle(this.qrCanvas.Location.X + this.qrCanvas.Width / 2 - this.logoCanvas.Width / 2, this.qrCanvas.Location.Y + this.qrCanvas.Height / 2 - this.logoCanvas.Height / 2, this.logoCanvas.Width, this.logoCanvas.Height));
+                    }
+
+                    // now we can save it..
+                    bmp.Save(qrSave.FileName, ImageFormat.Png);
+                    // and let it go:
+                    bmp.Dispose();
+                }
+                catch
+                {
+                    MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+           
+        }
+
 
 
         private void HandleSubmitClick(object sender, EventArgs e)
