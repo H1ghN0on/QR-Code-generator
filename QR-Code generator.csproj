@@ -117,5 +117,20 @@
   <ItemGroup>
     <None Include="Resources\formImages\trash.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formImages\vk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formImages\instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formImages\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formImages\ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formImages\logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

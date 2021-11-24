@@ -6,8 +6,8 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 namespace Холст_для_QR
 {
@@ -22,6 +22,7 @@ namespace Холст_для_QR
         public Image logo;
         private int Size { get; set; }
         private int Version { get; set; }
+        private string ErrorMessage { get; set; }
 
         public QrForm()
         {
@@ -39,6 +40,9 @@ namespace Холст_для_QR
             {
                 btn.BringToFront();
             }
+            this.errorText.Text = "";
+            this.dateUpdateTimer.Start();
+            this.dateUpdateTimer.Tick += new EventHandler(UpdateDateEverySecond);
         }
         public void FillSearchPatterns()
         {
@@ -475,7 +479,7 @@ namespace Холст_для_QR
             Size = QRProperties.FieldSize[code.Version];
             Text = contentInput.Text;
             Version = code.Version;
-            
+
             Console.WriteLine($"\n{code.Code.Length}");
             qr = new char[Size][];
             for (int i = 0; i < Size; i++)
@@ -497,23 +501,17 @@ namespace Холст_для_QR
             FillVersion();
             FillMask(correctionLevel);
             FillData(code.Code);
-            Color purple = Color.FromArgb(164, 6, 203);
             qrCanvas.Image = new Bitmap(qrCanvas.Width, qrCanvas.Height);
             Graphics g = Graphics.FromImage(qrCanvas.Image);
             Brush foreBrush = new SolidBrush(foreColor);
             Brush backBrush = new SolidBrush(backColor);
             int penWidth = 55;
-            Pen pen = new Pen(backColor, penWidth);
-            Graphics f = this.CreateGraphics();
-            int pointBeginX = this.qrCanvas.Location.X;
-            int pointBeginY = this.qrCanvas.Location.Y;
-            int customWidth = this.qrCanvas.Width;
             this.qrPanel.BackColor = backColor;
-/*            FillBackground(pen, this.qrPanel.Location.X + 50, this.qrPanel.Location.Y + 50, this.qrCanvas.Width);*/
+            /*            FillBackground(pen, this.qrPanel.Location.X + 50, this.qrPanel.Location.Y + 50, this.qrCanvas.Width);*/
             for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++) {
                 for (int j = 0; j < QRProperties.FieldSize[code.Version]; j++)
                 {
-                  
+
                     if (qr[j][i] == '1' || qr[j][i] == '3' || qr[j][i] == '6' || qr[j][i] == '7')
                     {
                         g.FillRectangle(foreBrush, i * size, j * size, size, size);
@@ -524,7 +522,7 @@ namespace Холст_для_QR
 
                 }
             }
-          
+
             if (logo != null)
             {
                 this.logoCanvas.Width = 0;
@@ -555,13 +553,30 @@ namespace Холст_для_QR
             this.saveButton.Visible = true;
             this.printButton.Visible = true;
         }
-
+        private string CheckExtension(string name, string[] exts)
+        {
+            string[] filename = name.Split('.');
+            string extension = filename[filename.Length - 1];
+            if (!exts.Contains(extension))
+            {
+                string extensionOutput = "";
+                foreach (string ext in exts)
+                {
+                    extensionOutput += $"'{ext}', ";
+                }
+                extensionOutput = extensionOutput.Substring(0, extensionOutput.Length - 2);
+                return $"Поддерживаются только файлы формата: {extensionOutput} !";
+            } else
+            {
+                return "";
+            }
+        }
         private void DeactivateButton()
         {
             this.Controls.Remove(activeButton.Panel);
             for (int i = activeButton.Order + 1; i < buttonList.Count; i++)
             {
-                buttonList[i].Location = new Point(buttonList[i].Location.X, buttonList[i].Location.Y - 100);
+                buttonList[i].Location = new Point(buttonList[i].Location.X, buttonList[i].Location.Y - 150);
             }
             activeButton.Active = false;
             activeButton = null;
@@ -585,7 +600,7 @@ namespace Холст_для_QR
             this.Controls.Add(clickedButton.Panel);
             for (int i = order + 1; i < buttonList.Count; i++)
             {
-                buttonList[i].Location = new Point(buttonList[i].Location.X, buttonList[i].Location.Y + 100);
+                buttonList[i].Location = new Point(buttonList[i].Location.X, buttonList[i].Location.Y + 150);
             }
         }
 
@@ -613,6 +628,11 @@ namespace Холст_для_QR
         {
             if (this.colorChange.ShowDialog() != DialogResult.Cancel)
             {
+                if (this.colorChange.Color == this.backColor)
+                {
+                    this.errorText.Text = "Нельзя выбрать одинаковые цвета для фона и переднего плана!";
+                    return;
+                }
                 this.foregroundColorButton.BackColor = this.colorChange.Color;
                 if (this.colorChange.Color == Color.White)
                 {
@@ -630,6 +650,11 @@ namespace Холст_для_QR
         {
             if (this.colorChange.ShowDialog() != DialogResult.Cancel)
             {
+                if (this.colorChange.Color == this.foreColor)
+                {
+                    this.errorText.Text = "Нельзя выбрать одинаковые цвета для фона и переднего плана!";
+                    return;
+                }
                 this.backgroundColorButton.BackColor = this.colorChange.Color;
                 if (this.colorChange.Color == Color.White)
                 {
@@ -644,10 +669,22 @@ namespace Холст_для_QR
 
         private void HandleFileUploadButtonClick(object sender, EventArgs e)
         {
-            if (this.logoUpload.ShowDialog() != DialogResult.Cancel)
+            if (this.fileUpload.ShowDialog() != DialogResult.Cancel)
             {
-                this.fileUploadButton.Text = this.logoUpload.FileName;
-                logo = Image.FromFile(this.logoUpload.FileName);
+                string[] extensions = { "png", "jpg", "bmp" };
+                string possibleError = CheckExtension(this.fileUpload.FileName, extensions);
+                if (possibleError == "")
+                {
+                    this.logoUploadButton.Text = this.fileUpload.FileName;
+                    logo = Image.FromFile(this.fileUpload.FileName);
+                    this.errorText.Text = "";
+                }
+                else
+                {
+                    this.errorText.Text = possibleError;
+                    return;
+                }
+                
             }
         }
 
@@ -658,7 +695,7 @@ namespace Холст_для_QR
 
         private void HandleDeleteLogoButtonClick(object sender, EventArgs e)
         {
-            this.fileUploadButton.Text = "Файл не загружен";
+            this.logoUploadButton.Text = "Файл не загружен";
             logo = null;
         }
 
@@ -736,11 +773,97 @@ namespace Холст_для_QR
             }
         }
 
-        private void HandleSubmitClick(object sender, EventArgs e)
+        private void HandleTextFileUploadButtonClick(object sender, EventArgs e)
         {
-            Draw();
-            Console.WriteLine(this.contentInput.Text);
+            if (this.fileUpload.ShowDialog() != DialogResult.Cancel)
+            {
+                string[] extensions = { "txt" };
+                string possibleError = CheckExtension(this.fileUpload.FileName, extensions);
+                if (possibleError == "")
+                {
+                    this.textFileUploadButton.Text = this.fileUpload.FileName;
+                    try
+                    {
+                        using (StreamReader sr = new StreamReader(fileUpload.FileName))
+                        {
+                            Text = contentInput.Text = sr.ReadToEnd();
+                        }
+                        this.errorText.Text = "";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                        this.errorText.Text = $"Непредвиденная ошибка: {ex}";
+                    }
+                } else
+                {
+                    this.errorText.Text = possibleError;
+                    return;
+                }
+            }
         }
 
+        private void HandleDeleteTextFileButtonClick(object sender, EventArgs e)
+        {
+            contentInput.Text = "";
+        }
+
+        private void HandleDateAppendButtonClick(object sender, EventArgs e)
+        {
+            contentInput.Text += DateTime.Now;
+        }
+
+        private void HandleSocialClick(object sender, EventArgs e)
+        {
+            string text = this.contentInput.Text;
+            switch ((sender as PictureBox).Name)
+            {
+                case "vk":
+                    {
+                        this.contentInput.Text = $"https://vk.com/{text}";
+                        logo = Image.FromFile(@"D:\Code\Проекты\QR-Code generator\Resources\formImages\vk-big.png");
+                        break;
+                    }
+                case "inst":
+                    {
+                        this.contentInput.Text = $"https://www.instagram.com/{text}";
+                        logo = Image.FromFile(@"D:\Code\Проекты\QR-Code generator\Resources\formImages\instagram-big.png");
+                        break;
+                    }
+                case "fb":
+                    {
+                        this.contentInput.Text = $"https://www.facebook.com/{text}";
+                        logo = Image.FromFile(@"D:\Code\Проекты\QR-Code generator\Resources\formImages\facebook-big.png");
+                        break;
+                    }
+                case "ok":
+                    {
+                        this.contentInput.Text = $"https://ok.ru/profile/{text}";
+                        logo = Image.FromFile(@"D:\Code\Проекты\QR-Code generator\Resources\formImages\ok-big.png");
+                        break;
+                    }
+               
+            }
+            this.contentInput.SelectionStart = this.contentInput.Text.Length;
+        }
+
+        private void HandleSubmitClick(object sender, EventArgs e)
+        {
+            if (this.contentInput.Text == "")
+            {
+                this.errorText.Text = "Введите текст!";
+            } else
+            {
+                this.errorText.Text = "";
+                Draw();
+            }
+        }
+
+
+        private void UpdateDateEverySecond(object sender, EventArgs e)
+        {
+            this.dateAppendButton.Text = $"Добавить текущую дату: {DateTime.Now}";
+        }
+        
     }
 }
