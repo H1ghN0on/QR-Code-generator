@@ -47,15 +47,17 @@ namespace Холст_для_QR
             this.checkBorderRound = new System.Windows.Forms.CheckBox();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.colorPanel = new System.Windows.Forms.Panel();
-            this.logoCanvas = new System.Windows.Forms.PictureBox();
-            this.contentButton = new Холст_для_QR.SettingButton();
-            this.colorButton = new Холст_для_QR.SettingButton();
-            this.logoButton = new Холст_для_QR.SettingButton();
             this.saveButton = new System.Windows.Forms.Button();
             this.qrSave = new System.Windows.Forms.SaveFileDialog();
-            this.qrPanel = new System.Windows.Forms.Panel();
             this.printButton = new System.Windows.Forms.Button();
+            this.logoCanvas = new System.Windows.Forms.PictureBox();
+            this.qrPanel = new System.Windows.Forms.Panel();
             this.qrCanvas = new System.Windows.Forms.PictureBox();
+            this.qrPrint = new System.Windows.Forms.PrintDialog();
+            this.colorButton = new Холст_для_QR.SettingButton();
+            this.logoButton = new Холст_для_QR.SettingButton();
+            this.contentButton = new Холст_для_QR.SettingButton();
+            this.qrPrintPreview = new System.Windows.Forms.PrintPreviewDialog();
             this.uploadPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deleteLogoButton)).BeginInit();
             this.contentPanel.SuspendLayout();
@@ -176,21 +178,50 @@ namespace Холст_для_QR
             resources.ApplyResources(this.colorPanel, "colorPanel");
             this.colorPanel.Name = "colorPanel";
             // 
+            // saveButton
+            // 
+            resources.ApplyResources(this.saveButton, "saveButton");
+            this.saveButton.Name = "saveButton";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.HandleSaveButtonClick);
+            // 
+            // qrSave
+            // 
+            resources.ApplyResources(this.qrSave, "qrSave");
+            // 
+            // printButton
+            // 
+            resources.ApplyResources(this.printButton, "printButton");
+            this.printButton.Name = "printButton";
+            this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.HandlePrintButtonClick);
+            // 
             // logoCanvas
             // 
             resources.ApplyResources(this.logoCanvas, "logoCanvas");
             this.logoCanvas.Name = "logoCanvas";
             this.logoCanvas.TabStop = false;
             // 
-            // contentButton
+            // qrPanel
             // 
-            this.contentButton.Active = false;
-            resources.ApplyResources(this.contentButton, "contentButton");
-            this.contentButton.Name = "contentButton";
-            this.contentButton.Order = 0;
-            this.contentButton.Panel = this.contentPanel;
-            this.contentButton.UseVisualStyleBackColor = true;
-            this.contentButton.Click += new System.EventHandler(this.HandleSettingButtonClick);
+            this.qrPanel.AllowDrop = true;
+            this.qrPanel.BackColor = System.Drawing.Color.White;
+            this.qrPanel.Controls.Add(this.logoCanvas);
+            this.qrPanel.Controls.Add(this.qrCanvas);
+            this.qrPanel.ForeColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.qrPanel, "qrPanel");
+            this.qrPanel.Name = "qrPanel";
+            // 
+            // qrCanvas
+            // 
+            this.qrCanvas.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.qrCanvas, "qrCanvas");
+            this.qrCanvas.Name = "qrCanvas";
+            this.qrCanvas.TabStop = false;
+            // 
+            // qrPrint
+            // 
+            this.qrPrint.UseEXDialog = true;
             // 
             // colorButton
             // 
@@ -212,38 +243,20 @@ namespace Холст_для_QR
             this.logoButton.UseVisualStyleBackColor = true;
             this.logoButton.Click += new System.EventHandler(this.HandleSettingButtonClick);
             // 
-            // saveButton
+            // contentButton
             // 
-            resources.ApplyResources(this.saveButton, "saveButton");
-            this.saveButton.Name = "saveButton";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.HandleSaveButtonClick);
+            this.contentButton.Active = false;
+            resources.ApplyResources(this.contentButton, "contentButton");
+            this.contentButton.Name = "contentButton";
+            this.contentButton.Order = 0;
+            this.contentButton.Panel = this.contentPanel;
+            this.contentButton.UseVisualStyleBackColor = true;
+            this.contentButton.Click += new System.EventHandler(this.HandleSettingButtonClick);
             // 
-            // qrSave
+            // qrPrintPreview
             // 
-            resources.ApplyResources(this.qrSave, "qrSave");
-            // 
-            // qrPanel
-            // 
-            this.qrPanel.BackColor = System.Drawing.Color.White;
-            this.qrPanel.Controls.Add(this.logoCanvas);
-            this.qrPanel.Controls.Add(this.qrCanvas);
-            this.qrPanel.ForeColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.qrPanel, "qrPanel");
-            this.qrPanel.Name = "qrPanel";
-            // 
-            // printButton
-            // 
-            resources.ApplyResources(this.printButton, "printButton");
-            this.printButton.Name = "printButton";
-            this.printButton.UseVisualStyleBackColor = true;
-            // 
-            // qrCanvas
-            // 
-            this.qrCanvas.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.qrCanvas, "qrCanvas");
-            this.qrCanvas.Name = "qrCanvas";
-            this.qrCanvas.TabStop = false;
+            resources.ApplyResources(this.qrPrintPreview, "qrPrintPreview");
+            this.qrPrintPreview.Name = "qrPrintPreview";
             // 
             // QrForm
             // 
@@ -264,7 +277,7 @@ namespace Холст_для_QR
             this.Controls.Add(this.qrPanel);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "QrForm";
@@ -302,14 +315,16 @@ namespace Холст_для_QR
         private SettingButton contentButton;
         private SettingButton colorButton;
         private SettingButton logoButton;
-        private System.Windows.Forms.PictureBox logoCanvas;
         private System.Windows.Forms.CheckBox checkBorderRound;
         private System.Windows.Forms.PictureBox deleteLogoButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.SaveFileDialog qrSave;
-        private System.Windows.Forms.Panel qrPanel;
         private System.Windows.Forms.Button printButton;
+        private System.Windows.Forms.PictureBox logoCanvas;
+        private System.Windows.Forms.Panel qrPanel;
         private System.Windows.Forms.PictureBox qrCanvas;
+        private System.Windows.Forms.PrintDialog qrPrint;
+        private System.Windows.Forms.PrintPreviewDialog qrPrintPreview;
     }
 }
 

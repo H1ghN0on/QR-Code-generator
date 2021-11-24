@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Холст_для_QR
     {
         List<SettingButton> buttonList = new List<SettingButton>();
         SettingButton activeButton;
+        QRCode code;
+        public string Text { get; set; }
         Color foreColor = Color.Black, backColor = Color.White;
         public char[][] qr;
         public Image logo;
@@ -30,8 +33,8 @@ namespace Холст_для_QR
             this.Controls.Remove(uploadPanel);
             this.Controls.Remove(contentPanel);
             this.Controls.Remove(colorPanel);
+            this.printButton.Visible = false;
             this.saveButton.Visible = false;
-   
             foreach (SettingButton btn in buttonList)
             {
                 btn.BringToFront();
@@ -468,9 +471,11 @@ namespace Холст_для_QR
             {
                 this.logoCanvas.Visible = false;
             }
-            QRCode code = QREncode.Encode(contentInput.Text, correctionLevel);
+            code = QREncode.Encode(contentInput.Text, correctionLevel);
             Size = QRProperties.FieldSize[code.Version];
+            Text = contentInput.Text;
             Version = code.Version;
+            
             Console.WriteLine($"\n{code.Code.Length}");
             qr = new char[Size][];
             for (int i = 0; i < Size; i++)
@@ -525,7 +530,7 @@ namespace Холст_для_QR
                 this.logoCanvas.Width = 0;
                 this.logoCanvas.Height = 0;
                 float width = code.Code.Length;
-                width *= 0.15F;
+                width *= 0.1F;
                 float mem = Convert.ToSingle(Math.Floor(Math.Sqrt(width)));
                 for (int i = 0; i < mem; i++)
                 {
@@ -545,9 +550,10 @@ namespace Холст_для_QR
                 this.logoCanvas.Image = logo;
                 this.logoCanvas.Left = this.qrCanvas.Location.X + this.qrCanvas.Width / 2 - this.logoCanvas.Width / 2;
                 this.logoCanvas.Top = this.qrCanvas.Location.Y + this.qrCanvas.Height / 2 - this.logoCanvas.Height / 2;
+                this.logoCanvas.BringToFront();
             }
             this.saveButton.Visible = true;
-            this.logoCanvas.BringToFront();
+            this.printButton.Visible = true;
         }
 
         private void DeactivateButton()
@@ -670,8 +676,22 @@ namespace Холст_для_QR
                     Bitmap bmp = new Bitmap(qrPanel.ClientSize.Width, qrPanel.ClientSize.Height);
                     using (Graphics G = Graphics.FromImage(bmp))
                     {
+                        this.qrCanvas.BringToFront();
                         qrPanel.DrawToBitmap(bmp, qrPanel.ClientRectangle);
-                        logoCanvas.DrawToBitmap(bmp, new Rectangle(this.qrCanvas.Location.X + this.qrCanvas.Width / 2 - this.logoCanvas.Width / 2, this.qrCanvas.Location.Y + this.qrCanvas.Height / 2 - this.logoCanvas.Height / 2, this.logoCanvas.Width, this.logoCanvas.Height));
+                        if (this.checkBorderRound.Checked)
+                        {
+                            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+                            path.AddEllipse(0, 0, this.logoCanvas.Width, this.logoCanvas.Height);
+                            Region rgn = new Region(path);
+                            this.logoCanvas.Region = rgn;   
+                        }
+                        else
+                        {
+                            this.logoCanvas.Region = null;
+              
+                        }
+                        this.logoCanvas.BringToFront();
+                        
                     }
 
                     // now we can save it..
@@ -687,8 +707,34 @@ namespace Холст_для_QR
             }
            
         }
+        private void PrintPage(object o, PrintPageEventArgs e)
+        {
+ 
+            Bitmap bmp = new Bitmap(qrPanel.ClientSize.Width, qrPanel.ClientSize.Height);
+            Graphics gr = Graphics.FromImage(bmp);
+            this.qrCanvas.BringToFront();
+            
+            qrPanel.DrawToBitmap(bmp, qrPanel.ClientRectangle);
+            this.logoCanvas.BringToFront();
+/*            string text = $"Исходный текст: {Text}";
+            gr.DrawString(text, new Font("Comic Sans", 14), new SolidBrush(Color.Purple), 25f, Convert.ToSingle(375));*/
+            e.Graphics.DrawImage(bmp, 0, 0);
+            bmp.Dispose(); 
+        }
+        private void HandlePrintButtonClick(object sender, EventArgs e)
+        {
+            using (PrintDocument document = new PrintDocument())
+            {
+                document.PrintPage += PrintPage;
 
-
+                qrPrint.Document = document;
+                qrPrintPreview.Document = document;
+                if (qrPrintPreview.ShowDialog() == DialogResult.OK)
+                {
+                    if (qrPrint.ShowDialog() == DialogResult.OK) document.Print();
+                }       
+            }
+        }
 
         private void HandleSubmitClick(object sender, EventArgs e)
         {
