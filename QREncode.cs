@@ -40,8 +40,9 @@ namespace Холст_для_QR
                 ByteString += code;
             }
         }
-        private static void SetVersion()
+        private static int SetVersion()
         {
+            Version = -1;
             bool or = false;
             for (int i = 0; i < QRProperties.Size[CorrectionLevel].Length; i++)
             {
@@ -50,6 +51,10 @@ namespace Холст_для_QR
                     Version = i;
                     break;
                 }
+            }
+            if (Version == -1)
+            {
+                return -1;
             }
             SetHeader();
             while (ByteString.Length % 8 != 0)
@@ -61,6 +66,7 @@ namespace Холст_для_QR
                 ByteString += or ? "00010001" : "11101100";
                 or = !or;
             }
+            return 0;
 /*            Console.WriteLine($"Битовая строка с служебной информацией: {ByteString}");*/
         }
         private static void SetHeader()
@@ -322,7 +328,10 @@ namespace Холст_для_QR
         public static QRCode Encode(string value, int correctionLevel)
         {
             ToBytes(value, correctionLevel);
-            SetVersion();
+            if (SetVersion() == -1)
+            {
+                return null;
+            }
             SetBlocks();
             FillBlocks();
             SetByteCorrection();

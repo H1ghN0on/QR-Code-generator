@@ -17,7 +17,7 @@ namespace Холст_для_QR
         SettingButton activeButton;
         QRCode code;
         public string Text { get; set; }
-        Color foreColor = Color.Black, backColor = Color.White;
+        Color foreColor = Color.LightGray, backColor = Color.White;
         public char[][] qr;
         public Image logo;
         private int Size { get; set; }
@@ -34,8 +34,12 @@ namespace Холст_для_QR
             this.Controls.Remove(uploadPanel);
             this.Controls.Remove(contentPanel);
             this.Controls.Remove(colorPanel);
+            this.contentInput.Text = "SampleText";
+            Draw();
+            this.contentInput.Text = "";
             this.printButton.Visible = false;
             this.saveButton.Visible = false;
+            this.foreColor = Color.Black;
             foreach (SettingButton btn in buttonList)
             {
                 btn.BringToFront();
@@ -467,6 +471,7 @@ namespace Холст_для_QR
             string stringToCode = "KAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOKAIDOH";
             string theBiggest = "Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас  Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорас Артас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорасАртас пидорас";
             int correctionLevel = 1;
+            string formName = chooseFormPanel.Controls.OfType<RadioButton>().Select((rb, i) => new { rb, i }).Single(z => z.rb.Checked).rb.Name;
             if (logo != null)
             {
                 this.logoCanvas.Visible = true;
@@ -475,7 +480,15 @@ namespace Холст_для_QR
             {
                 this.logoCanvas.Visible = false;
             }
+            if (formName != "radioSquareForm") {
+                correctionLevel = 3;
+            }
             code = QREncode.Encode(contentInput.Text, correctionLevel);
+            if (code == null)
+            {
+                this.errorText.Text = "Слишком много символов";
+                return;
+            }
             Size = QRProperties.FieldSize[code.Version];
             Text = contentInput.Text;
             Version = code.Version;
@@ -505,20 +518,39 @@ namespace Холст_для_QR
             Graphics g = Graphics.FromImage(qrCanvas.Image);
             Brush foreBrush = new SolidBrush(foreColor);
             Brush backBrush = new SolidBrush(backColor);
-            int penWidth = 55;
             this.qrPanel.BackColor = backColor;
-            /*            FillBackground(pen, this.qrPanel.Location.X + 50, this.qrPanel.Location.Y + 50, this.qrCanvas.Width);*/
+            
             for (int i = 0; i < QRProperties.FieldSize[code.Version]; i++) {
                 for (int j = 0; j < QRProperties.FieldSize[code.Version]; j++)
                 {
-
-                    if (qr[j][i] == '1' || qr[j][i] == '3' || qr[j][i] == '6' || qr[j][i] == '7')
+                    switch (formName)
                     {
-                        g.FillRectangle(foreBrush, i * size, j * size, size, size);
-                    } else
-                    {
-                        g.FillRectangle(backBrush, i * size, j * size, size, size);
+                        case "radioSquareForm":
+                            {
+                                if (qr[j][i] == '1' || qr[j][i] == '3' || qr[j][i] == '6' || qr[j][i] == '7')
+                                {
+                                    g.FillRectangle(foreBrush, i * size, j * size, size, size); 
+                                }
+                                else
+                                {
+                                    g.FillRectangle(backBrush, i * size, j * size, size, size);
+                                }
+                                break;
+                            }
+                        case "radioCircleForm":
+                            {
+                                if (qr[j][i] == '1' || qr[j][i] == '3' || qr[j][i] == '6' || qr[j][i] == '7')
+                                {
+                                    g.FillEllipse(foreBrush, i * size, j * size, size, size); 
+                                }
+                                else
+                                {
+                                    g.FillEllipse(backBrush, i * size, j * size, size, size);
+                                }
+                                break;
+                            }
                     }
+                    
 
                 }
             }
@@ -858,7 +890,6 @@ namespace Холст_для_QR
                 Draw();
             }
         }
-
 
         private void UpdateDateEverySecond(object sender, EventArgs e)
         {
