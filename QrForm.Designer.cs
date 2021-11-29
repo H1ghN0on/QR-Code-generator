@@ -1,7 +1,7 @@
 ﻿
 namespace Холст_для_QR
 {
-    partial class QrForm
+    partial class QRForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -30,7 +30,7 @@ namespace Холст_для_QR
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QrForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QRForm));
             this.CloseButton = new System.Windows.Forms.Label();
             this.contentInput = new System.Windows.Forms.TextBox();
             this.contentInputHint = new System.Windows.Forms.Label();
@@ -44,9 +44,13 @@ namespace Холст_для_QR
             this.fileUploadHint = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.uploadPanel = new System.Windows.Forms.Panel();
+            this.chooseFormPanel = new System.Windows.Forms.Panel();
+            this.chooseFormHint = new System.Windows.Forms.Label();
+            this.radioSquareForm = new System.Windows.Forms.RadioButton();
+            this.radioCircleForm = new System.Windows.Forms.RadioButton();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.deleteLogoButton = new System.Windows.Forms.PictureBox();
             this.checkBorderRound = new System.Windows.Forms.CheckBox();
-            this.chooseFormPanel = new System.Windows.Forms.Panel();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -76,13 +80,10 @@ namespace Холст_для_QR
             this.contentButton = new Холст_для_QR.SettingButton();
             this.logoButton = new Холст_для_QR.SettingButton();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.chooseFormHint = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.radioCircleForm = new System.Windows.Forms.RadioButton();
-            this.radioSquareForm = new System.Windows.Forms.RadioButton();
             this.uploadPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteLogoButton)).BeginInit();
             this.chooseFormPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteLogoButton)).BeginInit();
             this.contentPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ok)).BeginInit();
@@ -95,7 +96,6 @@ namespace Холст_для_QR
             ((System.ComponentModel.ISupportInitialize)(this.logoCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qrCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // CloseButton
@@ -112,7 +112,6 @@ namespace Холст_для_QR
             resources.ApplyResources(this.contentInput, "contentInput");
             this.contentInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.contentInput.Name = "contentInput";
-            this.contentInput.TextChanged += new System.EventHandler(this.HandleContentInputChange);
             // 
             // contentInputHint
             // 
@@ -129,7 +128,7 @@ namespace Холст_для_QR
             resources.ApplyResources(this.foregroundColorButton, "foregroundColorButton");
             this.foregroundColorButton.Name = "foregroundColorButton";
             this.foregroundColorButton.UseVisualStyleBackColor = false;
-            this.foregroundColorButton.Click += new System.EventHandler(this.HandleForecolorChooseButtonClick);
+            this.foregroundColorButton.Click += new System.EventHandler(this.HandleColorChooseButtonClick);
             // 
             // foregroundButtonHint
             // 
@@ -148,7 +147,7 @@ namespace Холст_для_QR
             this.backgroundColorButton.ForeColor = System.Drawing.Color.Black;
             this.backgroundColorButton.Name = "backgroundColorButton";
             this.backgroundColorButton.UseVisualStyleBackColor = false;
-            this.backgroundColorButton.Click += new System.EventHandler(this.HandleBackcolorChooseButtonClick);
+            this.backgroundColorButton.Click += new System.EventHandler(this.HandleColorChooseButtonClick);
             // 
             // logoUploadButton
             // 
@@ -171,10 +170,50 @@ namespace Холст_для_QR
             // 
             // uploadPanel
             // 
-            this.uploadPanel.Controls.Add(this.panel2);
             this.uploadPanel.Controls.Add(this.chooseFormPanel);
+            this.uploadPanel.Controls.Add(this.panel2);
             resources.ApplyResources(this.uploadPanel, "uploadPanel");
             this.uploadPanel.Name = "uploadPanel";
+            // 
+            // chooseFormPanel
+            // 
+            this.chooseFormPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chooseFormPanel.Controls.Add(this.chooseFormHint);
+            this.chooseFormPanel.Controls.Add(this.radioSquareForm);
+            this.chooseFormPanel.Controls.Add(this.radioCircleForm);
+            resources.ApplyResources(this.chooseFormPanel, "chooseFormPanel");
+            this.chooseFormPanel.Name = "chooseFormPanel";
+            // 
+            // chooseFormHint
+            // 
+            resources.ApplyResources(this.chooseFormHint, "chooseFormHint");
+            this.chooseFormHint.Name = "chooseFormHint";
+            // 
+            // radioSquareForm
+            // 
+            this.radioSquareForm.Checked = true;
+            this.radioSquareForm.Image = global::Холст_для_QR.Properties.Resources.square_form;
+            resources.ApplyResources(this.radioSquareForm, "radioSquareForm");
+            this.radioSquareForm.Name = "radioSquareForm";
+            this.radioSquareForm.TabStop = true;
+            this.radioSquareForm.UseVisualStyleBackColor = true;
+            // 
+            // radioCircleForm
+            // 
+            this.radioCircleForm.Image = global::Холст_для_QR.Properties.Resources.circle_form;
+            resources.ApplyResources(this.radioCircleForm, "radioCircleForm");
+            this.radioCircleForm.Name = "radioCircleForm";
+            this.radioCircleForm.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.deleteLogoButton);
+            this.panel2.Controls.Add(this.logoUploadButton);
+            this.panel2.Controls.Add(this.checkBorderRound);
+            this.panel2.Controls.Add(this.fileUploadHint);
+            resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Name = "panel2";
             // 
             // deleteLogoButton
             // 
@@ -190,15 +229,6 @@ namespace Холст_для_QR
             resources.ApplyResources(this.checkBorderRound, "checkBorderRound");
             this.checkBorderRound.Name = "checkBorderRound";
             this.checkBorderRound.UseVisualStyleBackColor = true;
-            // 
-            // chooseFormPanel
-            // 
-            this.chooseFormPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chooseFormPanel.Controls.Add(this.chooseFormHint);
-            this.chooseFormPanel.Controls.Add(this.radioSquareForm);
-            this.chooseFormPanel.Controls.Add(this.radioCircleForm);
-            resources.ApplyResources(this.chooseFormPanel, "chooseFormPanel");
-            this.chooseFormPanel.Name = "chooseFormPanel";
             // 
             // contentPanel
             // 
@@ -419,38 +449,7 @@ namespace Холст_для_QR
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.TabStop = false;
             // 
-            // chooseFormHint
-            // 
-            resources.ApplyResources(this.chooseFormHint, "chooseFormHint");
-            this.chooseFormHint.Name = "chooseFormHint";
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.deleteLogoButton);
-            this.panel2.Controls.Add(this.logoUploadButton);
-            this.panel2.Controls.Add(this.checkBorderRound);
-            this.panel2.Controls.Add(this.fileUploadHint);
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
-            // 
-            // radioCircleForm
-            // 
-            this.radioCircleForm.Image = global::Холст_для_QR.Properties.Resources.circle_form;
-            resources.ApplyResources(this.radioCircleForm, "radioCircleForm");
-            this.radioCircleForm.Name = "radioCircleForm";
-            this.radioCircleForm.UseVisualStyleBackColor = true;
-            // 
-            // radioSquareForm
-            // 
-            this.radioSquareForm.Checked = true;
-            this.radioSquareForm.Image = global::Холст_для_QR.Properties.Resources.square_form;
-            resources.ApplyResources(this.radioSquareForm, "radioSquareForm");
-            this.radioSquareForm.Name = "radioSquareForm";
-            this.radioSquareForm.TabStop = true;
-            this.radioSquareForm.UseVisualStyleBackColor = true;
-            // 
-            // QrForm
+            // QRForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
@@ -465,21 +464,23 @@ namespace Холст_для_QR
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.qrPanel);
             this.Controls.Add(this.uploadPanel);
-            this.Controls.Add(this.contentPanel);
-            this.Controls.Add(this.colorPanel);
             this.Controls.Add(this.contentButton);
             this.Controls.Add(this.colorButton);
             this.Controls.Add(this.logoButton);
+            this.Controls.Add(this.contentPanel);
+            this.Controls.Add(this.colorPanel);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "QrForm";
+            this.Name = "QRForm";
             this.uploadPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.deleteLogoButton)).EndInit();
             this.chooseFormPanel.ResumeLayout(false);
             this.chooseFormPanel.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteLogoButton)).EndInit();
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -494,8 +495,6 @@ namespace Холст_для_QR
             ((System.ComponentModel.ISupportInitialize)(this.logoCanvas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qrCanvas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

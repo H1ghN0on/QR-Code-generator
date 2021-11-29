@@ -15,7 +15,7 @@ namespace Холст_для_QR
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QrForm());
+            Application.Run(new QRForm());
         }
     }
 }

@@ -1,0 +1,16 @@
+D:\Code\Проекты\QR-Code generator\bin\Release\info.json
+D:\Code\Проекты\QR-Code generator\bin\Release\Холст для QR.exe.config
+D:\Code\Проекты\QR-Code generator\bin\Release\Холст для QR.exe
+D:\Code\Проекты\QR-Code generator\bin\Release\Холст для QR.pdb
+D:\Code\Проекты\QR-Code generator\bin\Release\Newtonsoft.Json.dll
+D:\Code\Проекты\QR-Code generator\bin\Release\Newtonsoft.Json.xml
+D:\Code\Проекты\QR-Code generator\obj\Release\QR-Code generator.csproj.AssemblyReference.cache
+D:\Code\Проекты\QR-Code generator\obj\Release\QR-Code generator.csproj.SuggestedBindingRedirects.cache
+D:\Code\Проекты\QR-Code generator\obj\Release\Холст_для_QR.QRForm.resources
+D:\Code\Проекты\QR-Code generator\obj\Release\Холст_для_QR.Properties.Resources.resources
+D:\Code\Проекты\QR-Code generator\obj\Release\Холст_для_QR.SettingButton.resources
+D:\Code\Проекты\QR-Code generator\obj\Release\QR-Code generator.csproj.GenerateResource.cache
+D:\Code\Проекты\QR-Code generator\obj\Release\QR-Code generator.csproj.CoreCompileInputs.cache
+D:\Code\Проекты\QR-Code generator\obj\Release\QR-Code generator.csproj.CopyComplete
+D:\Code\Проекты\QR-Code generator\obj\Release\Холст для QR.exe
+D:\Code\Проекты\QR-Code generator\obj\Release\Холст для QR.pdb
