@@ -25,9 +25,7 @@ namespace Холст_для_QR
 
         private static int Size { get; set; }
         private static char[][] qrArray { get; set; }
-        
         /* Шифрование */
-
         private static void ToBytes(string value, int correctionLevel)
         {
             ByteString = "";

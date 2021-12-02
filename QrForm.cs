@@ -52,6 +52,7 @@ namespace Холст_для_QR
             {
                 btn.BringToFront();
             }
+        
             this.errorText.Text = "";
             this.dateUpdateTimer.Start();
             this.dateUpdateTimer.Tick += new EventHandler(UpdateDateEverySecond);
@@ -135,8 +136,6 @@ namespace Холст_для_QR
                                 break;
                             }
                     }
-                    
-
                 }
             }
 
@@ -147,7 +146,6 @@ namespace Холст_для_QR
             this.saveButton.Visible = true;
             this.printButton.Visible = true;
         }
-
         private void SetImageOnQrCanvas(float size)
         {
             this.logoCanvas.Width = 0;
@@ -176,6 +174,9 @@ namespace Холст_для_QR
             this.logoCanvas.Top = this.qrCanvas.Location.Y + this.qrCanvas.Height / 2 - this.logoCanvas.Height / 2;
             this.logoCanvas.BringToFront();
         }
+
+
+
         private string CheckExtension(string name, string[] exts)
         {
             string[] filename = name.Split('.');
@@ -194,8 +195,11 @@ namespace Холст_для_QR
                 return null;
             }
         }
+
         private void DeactivateButton()
         {
+            this.activeButton.ForeColor = Color.Black;
+            this.activeButton.BackColor = Color.White;
             this.activeButton.Panel.Visible = false;
             for (int i = activeButton.Order + 1; i < buttonList.Count; i++)
             {
@@ -217,6 +221,8 @@ namespace Холст_для_QR
             {
                 DeactivateButton();
             }
+            clickedButton.ForeColor = Color.White;
+            clickedButton.BackColor = Color.Black;
             clickedButton.Active = !clickedButton.Active;
             activeButton = clickedButton;
             clickedButton.Panel.Visible = true; 
@@ -225,6 +231,8 @@ namespace Холст_для_QR
                 buttonList[i].Location = new Point(buttonList[i].Location.X, buttonList[i].Location.Y + 150);
             }
         }
+
+
         private void HandleCloseButtonClick(object sender, EventArgs e)
         {
             this.Close();
@@ -281,7 +289,6 @@ namespace Холст_для_QR
                 {
                     this.errorText.Text = possibleError;
                 }
-                
             }
         }
         private void HandleDeleteLogoButtonClick(object sender, EventArgs e)
@@ -346,7 +353,7 @@ namespace Холст_для_QR
             {
                 string[] extensions = { "txt" };
                 string possibleError = CheckExtension(this.fileUpload.FileName, extensions);
-                if (possibleError == "")
+                if (possibleError == null)
                 {
                     this.textFileUploadButton.Text = this.fileUpload.FileName;
                     try
@@ -362,6 +369,7 @@ namespace Холст_для_QR
                         Console.WriteLine(ex);
                         this.errorText.Text = $"Непредвиденная ошибка: {ex}";
                     }
+                    this.contentInput.SelectionStart = this.contentInput.Text.Length;
                 } else
                 {
                     this.errorText.Text = possibleError;
@@ -428,6 +436,8 @@ namespace Холст_для_QR
             }
 
         }
+
+
         private void UpdateDateEverySecond(object sender, EventArgs e)
         {
             this.dateAppendButton.Text = $"Добавить текущую дату: {DateTime.Now}";

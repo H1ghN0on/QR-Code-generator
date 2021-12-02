@@ -76,10 +76,10 @@ namespace Холст_для_QR
             this.errorText = new System.Windows.Forms.Label();
             this.dateUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.label5 = new System.Windows.Forms.Label();
-            this.colorButton = new Холст_для_QR.SettingButton();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.contentButton = new Холст_для_QR.SettingButton();
             this.logoButton = new Холст_для_QR.SettingButton();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.colorButton = new Холст_для_QR.SettingButton();
             this.uploadPanel.SuspendLayout();
             this.chooseFormPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -412,15 +412,12 @@ namespace Холст_для_QR
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // colorButton
+            // pictureBox5
             // 
-            this.colorButton.Active = false;
-            resources.ApplyResources(this.colorButton, "colorButton");
-            this.colorButton.Name = "colorButton";
-            this.colorButton.Order = 1;
-            this.colorButton.Panel = this.colorPanel;
-            this.colorButton.UseVisualStyleBackColor = true;
-            this.colorButton.Click += new System.EventHandler(this.HandleSettingButtonClick);
+            this.pictureBox5.Image = global::Холст_для_QR.Properties.Resources.logo;
+            resources.ApplyResources(this.pictureBox5, "pictureBox5");
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.TabStop = false;
             // 
             // contentButton
             // 
@@ -442,12 +439,15 @@ namespace Холст_для_QR
             this.logoButton.UseVisualStyleBackColor = true;
             this.logoButton.Click += new System.EventHandler(this.HandleSettingButtonClick);
             // 
-            // pictureBox5
+            // colorButton
             // 
-            this.pictureBox5.Image = global::Холст_для_QR.Properties.Resources.logo;
-            resources.ApplyResources(this.pictureBox5, "pictureBox5");
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.TabStop = false;
+            this.colorButton.Active = false;
+            resources.ApplyResources(this.colorButton, "colorButton");
+            this.colorButton.Name = "colorButton";
+            this.colorButton.Order = 1;
+            this.colorButton.Panel = this.colorPanel;
+            this.colorButton.UseVisualStyleBackColor = true;
+            this.colorButton.Click += new System.EventHandler(this.HandleSettingButtonClick);
             // 
             // QRForm
             // 
@@ -464,10 +464,10 @@ namespace Холст_для_QR
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.qrPanel);
             this.Controls.Add(this.uploadPanel);
+            this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.contentButton);
             this.Controls.Add(this.colorButton);
             this.Controls.Add(this.logoButton);
-            this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.colorPanel);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.DoubleBuffered = true;
