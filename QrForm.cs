@@ -13,18 +13,14 @@ namespace Холст_для_QR
 {
     public partial class QRForm : Form
     {
-        Color foreColor = Color.LightGray, backColor = Color.White;
-        List<SettingButton> buttonList = new List<SettingButton>();
-        SettingButton activeButton;
-        QRCode code;
-        public bool SocialClicked { get; set; }
-        public string InputText { get; set; }
-        public char[][] qr;
-        public Image logo;
-        public enum Direction
-        {
-            Up, Down
-        }
+        private Color foreColor = Color.LightGray, backColor = Color.White;
+        private List<SettingButton> buttonList = new List<SettingButton>();
+        private SettingButton activeButton;
+        private QRCode code;
+        private bool SocialClicked { get; set; }
+        private char[][] qr;
+        private Image logo;
+
         public QRForm()
         {
 
@@ -64,15 +60,7 @@ namespace Холст_для_QR
             Draw();
             this.contentInput.Text = "";
         }
-        public void FillBackground(Pen pen, int x1, int y1, int width)
-        {
-            Graphics f = this.CreateGraphics();
-            f.DrawLine(pen, x1 - pen.Width, y1 - pen.Width / 2, x1 + width + pen.Width, y1 - pen.Width / 2);
-            f.DrawLine(pen, x1 - pen.Width / 2F, y1, x1 - pen.Width / 2F, y1 + width);
-            f.DrawLine(pen, x1 + width + pen.Width / 2, y1 + width + pen.Width, x1 + width + pen.Width / 2, y1);
-            f.DrawLine(pen, x1 + width + pen.Width / 2, y1 + width + pen.Width / 2, x1 - pen.Width, y1 + width + pen.Width / 2);
-        }
-        public void Draw()
+        private void Draw()
         {    
             int correctionLevel = 1;
             string qrElementFormName = chooseFormPanel.Controls.OfType<RadioButton>().Select((rb, i) => new { rb, i }).Single(z => z.rb.Checked).rb.Name;
@@ -174,9 +162,6 @@ namespace Холст_для_QR
             this.logoCanvas.Top = this.qrCanvas.Location.Y + this.qrCanvas.Height / 2 - this.logoCanvas.Height / 2;
             this.logoCanvas.BringToFront();
         }
-
-
-
         private string CheckExtension(string name, string[] exts)
         {
             string[] filename = name.Split('.');
@@ -195,7 +180,6 @@ namespace Холст_для_QR
                 return null;
             }
         }
-
         private void DeactivateButton()
         {
             this.activeButton.ForeColor = Color.Black;
@@ -231,8 +215,6 @@ namespace Холст_для_QR
                 buttonList[i].Location = new Point(buttonList[i].Location.X, buttonList[i].Location.Y + 150);
             }
         }
-
-
         private void HandleCloseButtonClick(object sender, EventArgs e)
         {
             this.Close();
@@ -436,8 +418,6 @@ namespace Холст_для_QR
             }
 
         }
-
-
         private void UpdateDateEverySecond(object sender, EventArgs e)
         {
             this.dateAppendButton.Text = $"Добавить текущую дату: {DateTime.Now}";

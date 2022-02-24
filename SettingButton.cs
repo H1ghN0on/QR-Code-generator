@@ -19,6 +19,6 @@ namespace Холст_для_QR
         {
             InitializeComponent();
 
-        }
+        } 
     }
 }

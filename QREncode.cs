@@ -15,10 +15,10 @@ namespace Холст_для_QR
             public int size;
         }
         private static int BlockNumber { get; set; }
-        private static string[] data;
+
         private static string ByteString = "";
         private static Block[] Blocks;
-        private static int ByteCorrectionIndex;
+ 
         private static int[][] ByteCorrectionBlocks;
         private static int CorrectionLevel { get; set; }
         private static int Version { get; set; }
@@ -131,8 +131,9 @@ namespace Холст_для_QR
         }
         private static void SetByteCorrection()
         {
-            //В Polynomial первым значением является размер, последующими являются значениями самого генерирующего многочлена
+            int ByteCorrectionIndex = -1;
             int i;
+            //В Polynomial первым значением является размер, последующими являются значениями самого генерирующего многочлена
             for (i = 0; i < QRProperties.ByteCorrection.Polynomial.Length; i++)
             {
         
@@ -220,6 +221,7 @@ namespace Холст_для_QR
         }
         private static string MergeBlocks()
         {
+            string[] data;
             string finalResult = "";
             int maxBlockSize = Blocks[0].size;
             int blocksSize = 0;
@@ -510,7 +512,7 @@ namespace Холст_для_QR
                 }
             }
         }
-        public static void FillData(string value)
+        private static void FillData(string value)
         {
             int i = 0;
             for (int x = Size - 1; x > 0; x -= 4)
@@ -524,7 +526,7 @@ namespace Холст_для_QR
                 FillLast(value, y, ref i);
             }
         }
-        public static void FillSyncPatterns()
+        private static void FillSyncPatterns()
         {
             for (int x = 6, y = 6; x < Size - 6; x++, y++)
             {
@@ -541,7 +543,7 @@ namespace Холст_для_QR
 
             }
         }
-        public static void FillMask(int correctionLevel)
+        private static void FillMask(int correctionLevel)
         {
             string str = QRProperties.Mask[correctionLevel][0];
             Console.WriteLine(str);
@@ -603,7 +605,7 @@ namespace Холст_для_QR
                 }
             }
         }
-        public static void FillVersion()
+        private static void FillVersion()
         {
             if (Version >= 6)
             {
@@ -634,11 +636,7 @@ namespace Холст_для_QR
                 }
             }
         }
-        public static int Mask(int x, int y)
-        {
-            return (x + y) % 2;
-        }
-        public static int MaskArr(int x, int y)
+        private static int MaskArr(int x, int y)
         {
             return (x + y) % 2;
         }
